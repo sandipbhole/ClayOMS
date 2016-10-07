@@ -1,0 +1,231 @@
+﻿
+@{
+    ViewBag.Title = "FacultyMaster";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <br />
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel with-nav-tabs panel-primary">
+                    <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#tabFaculty" data-toggle="tab">Faculty<span></span></a>
+
+                            </li>
+                            <li class="">
+                                <a href="#tabDepartment" data-toggle="tab">Department<span></span></a>
+
+                            </li>
+                            <li class=""><a href="#tabProgramme" data-toggle="tab">Programme</a></li>
+                            <li><a href="#tabClass" data-toggle="tab">Class</a></li>
+                            <li><a href="#tabSubject" data-toggle="tab">Subject</a></li>
+
+
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-lg-6" style="margin: 0px 18px 10px;">
+                            <label>Faculty Master</label>
+                            <label style="margin-left: 142px;">Acc Year:</label>
+                            <select class="selectpicker form-control" style="width:initial;display:initial;height: 31px;">
+                                <option>2013</option>
+                                <option>2014</option>
+                                <option>2015</option>
+                                <option>2016</option>
+                            </select>
+
+                            <label style="margin-left: 4px;">Batch:</label>
+                            <select class="selectpicker form-control" style="width:initial;display:initial;height: 31px;">
+                                <option value="volvo">All</option>
+                                <option value="saab">Bsc</option>
+                                <option value="mercedes">Msc</option>
+                                <option value="audi">BE</option>
+                            </select>
+
+                        </div>
+                        <div class="col-lg-6 pull-right" style="margin-right:15px;margin-top:-38px">
+                            <a href="#" class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-print"></span> Print
+                            </a>
+                            <a href="#" class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-user"></span> Add
+                            </a>
+                            <a href="#" class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-download-alt"></span> Group Delete
+                            </a>
+                            <a href="#" class="btn btn-success btn-sm">
+                                <span class="glyphicon glyphicon-open"></span> Group Upload
+                            </a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="tabFaculty">
+
+                                <table id="example" class="table table-striped table-bordered table-responsive" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Howard Hatfield</td>
+                                            <td>Office Manager</td>
+                                            <td>San Francisco</td>
+                                            <td>51</td>
+                                            <td>2008/12/16</td>
+                                            <td>$164,500</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hope Fuentes</td>
+                                            <td>Secretary</td>
+                                            <td>San Francisco</td>
+                                            <td>41</td>
+                                            <td>2010/02/12</td>
+                                            <td>$109,850</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vivian Harrell</td>
+                                            <td>Financial Controller</td>
+                                            <td>San Francisco</td>
+                                            <td>62</td>
+                                            <td>2009/02/14</td>
+                                            <td>$452,500</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Timothy Mooney</td>
+                                            <td>Office Manager</td>
+                                            <td>London</td>
+                                            <td>37</td>
+                                            <td>2008/12/11</td>
+                                            <td>$136,200</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Bruno Nash</td>
+                                            <td>Software Engineer</td>
+                                            <td>London</td>
+                                            <td>38</td>
+                                            <td>2011/05/03</td>
+                                            <td>$163,500</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sakura Yamamoto</td>
+                                            <td>Support Engineer</td>
+                                            <td>Tokyo</td>
+                                            <td>37</td>
+                                            <td>2009/08/19</td>
+                                            <td>$139,575</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Thor Walton</td>
+                                            <td>Developer</td>
+                                            <td>New York</td>
+                                            <td>61</td>
+                                            <td>2013/08/11</td>
+                                            <td>$98,540</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Finn Camacho</td>
+                                            <td>Support Engineer</td>
+                                            <td>San Francisco</td>
+                                            <td>47</td>
+                                            <td>2009/07/07</td>
+                                            <td>$87,500</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Serge Baldwin</td>
+                                            <td>Data Coordinator</td>
+                                            <td>Singapore</td>
+                                            <td>64</td>
+                                            <td>2012/04/09</td>
+                                            <td>$138,575</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zenaida Frank</td>
+                                            <td>Software Engineer</td>
+                                            <td>New York</td>
+                                            <td>63</td>
+                                            <td>2010/01/04</td>
+                                            <td>$125,250</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zorita Serrano</td>
+                                            <td>Software Engineer</td>
+                                            <td>San Francisco</td>
+                                            <td>56</td>
+                                            <td>2012/06/01</td>
+                                            <td>$115,000</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jennifer Acosta</td>
+                                            <td>Junior Javascript Developer</td>
+                                            <td>Edinburgh</td>
+                                            <td>43</td>
+                                            <td>2013/02/01</td>
+                                            <td>$75,650</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cara Stevens</td>
+                                            <td>Sales Assistant</td>
+                                            <td>New York</td>
+                                            <td>46</td>
+                                            <td>2011/12/06</td>
+                                            <td>$145,600</td>
+                                            <td><a href="#">Edit</a><span> / </span><a href="#">Delete</a><span> / </span><a href="#">View Profile</a></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="tabDepartment">Department</div>
+                            <div class="tab-pane fade" id="tabProgramme">Programme</div>
+                            <div class="tab-pane fade" id="tabClass">Class</div>
+                            <div class="tab-pane fade" id="tabSubject">Subject</div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

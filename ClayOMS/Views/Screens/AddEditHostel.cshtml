@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "AddEditHostel";
+}
+
+<div class="panel panel-primary" style="margin-top:52px;width:450px;margin-left: 260px;">
+    <div class="panel-heading">
+        <h4 class="panel-title">Hostel</h4>
+    </div>
+
+
+    <div class="panel-body" style="margin-left: 80px;">
+        <span class="RequiredField">@Html.Label(Convert.ToString(TempData["LoginError"])) </span>
+
+
+
+
+        <div class="form-group row ">
+            <div class=" col-md-2 col-lg-3" style="margin-left: 58px;">
+                <label class="required" style=" margin-left: -60px;">Hostel<span>:</span></label>
+            </div>
+
+            <div class="col-md-2 col-lg-3" style="width: 221px;margin-top: -2px; margin-left:-48px">
+                <input type="text" />
+
+            </div>
+        </div>
+
+        <div class="form-group row" style="margin-top:-15px;margin-right:-28px">
+
+
+            <div class="col-sm-6 col-md-5 col-lg-3  no-sm-gutter" style="margin-top:15px; margin-right:-24px;margin-left:58px">
+
+                <input type="submit" id="btnSave" class="btn btn-primary col-xs-6 col-md-6 col-md-offset-7" value="Save" style="width: 90px;" />
+
+
+            </div>
+            <div class="col-sm-6 col-md-5 col-lg-3  no-sm-gutter" style="margin-left: 26px; margin-top: 14px;">
+                <input type="button" id="btnCancel" class="btn btn-primary col-xs-6 col-md-6 col-md-offset-7" value="Cancel" style="width: 90px;" />
+            </div>
+        </div>
+        @*<div class="modal-footer">
+
+            </div>*@
+    </div>
+
+</div>
+
