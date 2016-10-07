@@ -5,9 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using JDV.Models;
+using ClayOMS.Models;
 
-namespace JDV
+namespace ClayOMS
 {
     public partial class Startup
     {

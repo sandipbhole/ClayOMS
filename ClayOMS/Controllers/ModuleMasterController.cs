@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace JDV.Controllers
+namespace ClayOMS.Controllers
 {
     public class ModuleMasterController : Controller
     {

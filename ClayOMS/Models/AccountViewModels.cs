@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace JDV.Models
+namespace ClayOMS.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

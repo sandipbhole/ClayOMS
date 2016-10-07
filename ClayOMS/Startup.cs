@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(JDV.Startup))]
-namespace JDV
+[assembly: OwinStartupAttribute(typeof(ClayOMS.Startup))]
+namespace ClayOMS
 {
     public partial class Startup
     {
