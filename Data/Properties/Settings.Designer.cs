@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Clay.Web.Data.Properties {
+namespace Clay.OMS.Data.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -28,9 +28,9 @@ namespace Clay.Web.Data.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ARCHIT\\SQLSERVER2014;Initial Catalog=jdvfinal;Persist Security Info=T" +
             "rue;User ID=sa;Password=smit@50@rchit")]
-        public string jdvfinalConnectionString {
+        public string clayOMSfinalConnectionString {
             get {
-                return ((string)(this["jdvfinalConnectionString"]));
+                return ((string)(this["clayOMSfinalConnectionString"]));
             }
         }
     }
