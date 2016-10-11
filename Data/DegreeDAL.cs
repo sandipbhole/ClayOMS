@@ -102,9 +102,9 @@ namespace Clay.OMS.Data
             }
         }
 
-        public bool UpdateDegreee(COM.Degree requestSetDegree)
+        public bool UpdateDegree(COM.Degree requestSetDegree)
         {
-            logger.Info("UpdateDegreee");
+            logger.Info("UpdateDegree");
             EntityConnection entityConnection = new EntityConnection();
 
             try
