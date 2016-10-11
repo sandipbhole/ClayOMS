@@ -276,5 +276,68 @@ namespace Clay.OMS.Data
                 }
             }
         }
+
+
+        public List<COM.ProgrammeType> GetProgrammeType(COM.ProgrammeType requestSetProgrammeType)
+        {
+            logger.Info("GetProgrammeType");
+            EntityConnection entityConnection = new EntityConnection();
+            List<COM.ProgrammeType> responseGetProgrammeType = new List<COM.ProgrammeType>();
+
+            try
+            {
+                var getProgrammeType = from programmeType in entityConnection.dbclayOMSDataContext.GetProgrammeType( requestSetProgrammeType.programmeType)
+                                select programmeType;
+
+                foreach (var response in getProgrammeType)
+                {
+                    responseGetProgrammeType.Add(new COM.ProgrammeType
+                    {
+                        programmeType = response.ProgrammeType,
+                        programmeTypeID = response.ProgrammeTypeID,
+                        updateUser = response.UpdateUser,
+                        activated = response.Activated,
+                        updateDate = response.UpdateDate
+                    });
+                }
+
+                return responseGetProgrammeType;
+            }
+            //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
+            catch (ChangeConflictException ex)
+            {
+                logger.Error(ex.Message);
+                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
+                {
+                    //Console.WriteLine(ex.Message);
+                    foreach (ObjectChangeConflict occ in entityConnection.dbclayOMSDataContext.ChangeConflicts)
+                    {
+                        // All database values overwrite current values.
+                        occ.Resolve(RefreshMode.OverwriteCurrentValues);
+                    }
+                    entityConnection.dbclayOMSDataContext.Transaction.Rollback();
+                }
+                return responseGetProgrammeType;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
+                {
+                    entityConnection.dbclayOMSDataContext.Transaction.Rollback();
+                }
+                return responseGetProgrammeType;
+            }
+            finally
+            {
+                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
+                {
+                    entityConnection.dbclayOMSDataContext.Transaction.Dispose();
+                    entityConnection.dbclayOMSDataContext.Connection.Dispose();
+                    entityConnection.dbclayOMSDataContext.Connection.Close();
+                    entityConnection.dbclayOMSDataContext.Dispose();
+                }
+            }
+        }
     }
 }

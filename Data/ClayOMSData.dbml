@@ -23159,4 +23159,57 @@
       <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.FetchCountry" Method="FetchCountry">
+    <Parameter Name="countryName" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="FetchCountryResult">
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetExaminationGrade" Method="GetExaminationGrade">
+    <Parameter Name="grade" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="academicYear" Type="System.Int32" DbType="Int" />
+    <Parameter Name="programmeType" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetExaminationGradeResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetDistrict" Method="GetDistrict">
+    <Parameter Name="district" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="state" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="country" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetDistrictResult">
+      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DistrictID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="District" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetState" Method="GetState">
+    <Parameter Name="state" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="country" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetStateResult">
+      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCountry" Method="GetCountry">
+    <Parameter Name="country" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="GetCountryResult">
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetProgrammeType" Method="GetProgrammeType">
+    <Parameter Name="programmeType" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetProgrammeTypeResult">
+      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
