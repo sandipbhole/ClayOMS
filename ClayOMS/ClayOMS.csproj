@@ -1236,6 +1236,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Server Details.txt" />
+    <Content Include="Utility\ArchitUtility.exe" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

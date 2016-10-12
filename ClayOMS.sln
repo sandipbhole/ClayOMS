@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clay.OMS.Data", "Data\Clay.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clay.OMS.Message", "Message\Clay.OMS.Message.csproj", "{742DAF4B-1D90-4F76-AB3C-4AF3485D9052}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clay.OMS.Business", "Business\Clay.OMS.Business.csproj", "{EA4B2EE2-A3AC-4F99-8363-53E193F1F56F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{742DAF4B-1D90-4F76-AB3C-4AF3485D9052}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{742DAF4B-1D90-4F76-AB3C-4AF3485D9052}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{742DAF4B-1D90-4F76-AB3C-4AF3485D9052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA4B2EE2-A3AC-4F99-8363-53E193F1F56F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA4B2EE2-A3AC-4F99-8363-53E193F1F56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA4B2EE2-A3AC-4F99-8363-53E193F1F56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA4B2EE2-A3AC-4F99-8363-53E193F1F56F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
