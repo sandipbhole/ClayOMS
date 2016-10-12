@@ -1,0 +1,9 @@
+192.168.1.199 
+UserName : Administrator
+Password : Administrator
+
+JDV Application
+User Name : balbina
+Password : valerian
+
+Deep Mobile No. : 9325511994
