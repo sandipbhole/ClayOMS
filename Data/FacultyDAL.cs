@@ -17,11 +17,11 @@ using COM = Clay.OMS.Message;
 
 namespace Clay.OMS.Data
 {
-    public class ExaminationGradeDAL
+    public class FacultyDAL
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ExaminationGradeDAL));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(FacultyDAL));
 
-        public ExaminationGradeDAL()
+        public FacultyDAL()
         {
             InitializeLog4Net();
         }
@@ -53,63 +53,14 @@ namespace Clay.OMS.Data
             //logger.Info("Log4NET initialized successfully.");
         }
 
-        public bool InsertExaminationGrade(COM.ExaminationGrade requestSetExaminationGrade)
+        public bool InsertFaculty(COM.Faculty requestSetFaculty)
         {
-            logger.Info("InsertExaminationGrade");
+            logger.Info("InsertFaculty");
             EntityConnection entityConnection = new EntityConnection();
 
             try
             {
-                var insertExaminationGrade = from faculty in entityConnection.dbclayOMSDataContext.InsertExaminationGrade(requestSetExaminationGrade.grade, requestSetExaminationGrade.percentageFrom, requestSetExaminationGrade.percentageTo, requestSetExaminationGrade.description, requestSetExaminationGrade.academicYear, requestSetExaminationGrade.programmeTypeID, requestSetExaminationGrade.activated, requestSetExaminationGrade.addUser)
-                                   select faculty;
-
-                return true;
-            }
-            //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
-            catch (ChangeConflictException ex)
-            {
-                logger.Error(ex.Message);
-                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
-                {
-                    //Console.WriteLine(ex.Message);
-                    foreach (ObjectChangeConflict occ in entityConnection.dbclayOMSDataContext.ChangeConflicts)
-                    {
-                        // All database values overwrite current values.
-                        occ.Resolve(RefreshMode.OverwriteCurrentValues);
-                    }
-                    entityConnection.dbclayOMSDataContext.Transaction.Rollback();
-                }
-                return false;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex.Message);
-                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
-                {
-                    entityConnection.dbclayOMSDataContext.Transaction.Rollback();
-                }
-                return false;
-            }
-            finally
-            {
-                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
-                {
-                    entityConnection.dbclayOMSDataContext.Transaction.Dispose();
-                    entityConnection.dbclayOMSDataContext.Connection.Dispose();
-                    entityConnection.dbclayOMSDataContext.Connection.Close();
-                    entityConnection.dbclayOMSDataContext.Dispose();
-                }
-            }
-        }
-
-        public bool UpdateExaminationGrade(COM.ExaminationGrade requestSetExaminationGrade)
-        {
-            logger.Info("UpdateExaminationGrade");
-            EntityConnection entityConnection = new EntityConnection();
-
-            try
-            {
-                var updateExaminationGrade = from faculty in entityConnection.dbclayOMSDataContext.UpdateExaminationGrade(requestSetExaminationGrade.gradeID, requestSetExaminationGrade.grade, requestSetExaminationGrade.percentageFrom, requestSetExaminationGrade.percentageTo, requestSetExaminationGrade.description,requestSetExaminationGrade.academicYear,requestSetExaminationGrade.programmeTypeID,requestSetExaminationGrade.activated,requestSetExaminationGrade.updateUser )
+                var insertFaculty = from faculty in entityConnection.dbclayOMSDataContext.InsertFaculty(requestSetFaculty.facultyID,requestSetFaculty.facultyName,requestSetFaculty.yearOfEstablishment,requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.addUser)
                                              select faculty;
 
                 return true;
@@ -151,33 +102,17 @@ namespace Clay.OMS.Data
             }
         }
 
-        public COM.ExaminationGrade FetchExaminationGrade(COM.ExaminationGrade requestSetExaminationGrade)
+        public bool UpdateFaculty(COM.Faculty requestSetFaculty)
         {
-            logger.Info("FetchExaminationGrade");
+            logger.Info("UpdateFaculty");
             EntityConnection entityConnection = new EntityConnection();
-            COM.ExaminationGrade responseGetExaminationGrade = new COM.ExaminationGrade();
 
             try
             {
-                var fetchExaminationGrade = from faculty in entityConnection.dbclayOMSDataContext.FetchExaminationGrade(requestSetExaminationGrade.gradeID)
-                                  select faculty;
+                var updateFaculty = from faculty in entityConnection.dbclayOMSDataContext.UpdateFaculty(requestSetFaculty.facultyID, requestSetFaculty.facultyName, requestSetFaculty.yearOfEstablishment, requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.updateUser)
+                                             select faculty;
 
-                foreach (var response in fetchExaminationGrade)
-                {
-                    responseGetExaminationGrade.grade = response.Grade;
-                    responseGetExaminationGrade.gradeID = response.GradeID;
-                    responseGetExaminationGrade.programmeType = response.ProgrammeType;
-                    responseGetExaminationGrade.programmeTypeID = response.ProgrammeTypeID;
-                    responseGetExaminationGrade.updateUser = response.UpdateUser;
-                    responseGetExaminationGrade.activated = response.Activated;
-                    responseGetExaminationGrade.updateDate = response.UpdateDate;
-                    requestSetExaminationGrade.percentageFrom = response.PercentageFrom;
-                    responseGetExaminationGrade.percentageTo = response.PercentageTo;
-                    responseGetExaminationGrade.description = response.Description;
-                    responseGetExaminationGrade.academicYear = response.AcademicYear;
-                }
-
-                return responseGetExaminationGrade;
+                return true;
             }
             //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
             catch (ChangeConflictException ex)
@@ -193,7 +128,7 @@ namespace Clay.OMS.Data
                     }
                     entityConnection.dbclayOMSDataContext.Transaction.Rollback();
                 }
-                return responseGetExaminationGrade;
+                return false;
             }
             catch (Exception ex)
             {
@@ -202,7 +137,7 @@ namespace Clay.OMS.Data
                 {
                     entityConnection.dbclayOMSDataContext.Transaction.Rollback();
                 }
-                return responseGetExaminationGrade;
+                return false;
             }
             finally
             {
@@ -216,33 +151,93 @@ namespace Clay.OMS.Data
             }
         }
 
-        public List<COM.ExaminationGrade> GetExaminationGrade(COM.ExaminationGrade requestSetExaminationGrade)
+        public COM.Faculty FetchFaculty(COM.Faculty requestSetFaculty)
         {
-            logger.Info("GetExaminationGrade");
+            logger.Info("FetchFaculty");
             EntityConnection entityConnection = new EntityConnection();
-            List<COM.ExaminationGrade> responseGetExaminationGrade = new List<COM.ExaminationGrade>();
+            COM.Faculty responseGetFaculty = new COM.Faculty();
 
             try
             {
-                var getExaminationGrade = from faculty in entityConnection.dbclayOMSDataContext.GetExaminationGrade(requestSetExaminationGrade.grade, requestSetExaminationGrade.programmeType,requestSetExaminationGrade.academicYear,requestSetExaminationGrade.activated)
-                                  select faculty;
+                var fetchFaculty = from faculty in entityConnection.dbclayOMSDataContext.FetchFaculty(requestSetFaculty.facultyID)
+                                            select faculty;
 
-                foreach (var response in getExaminationGrade)
+                foreach (var response in fetchFaculty)
                 {
-                    responseGetExaminationGrade.Add(new COM.ExaminationGrade
+                    responseGetFaculty.facultyName = response.FacultyName;
+                    responseGetFaculty.facultyID = response.FacultyID;
+                    responseGetFaculty.yearOfEstablishment = response.YearOfEstablishment;
+                    responseGetFaculty.dean = response.Dean;
+                    responseGetFaculty.updateUser = response.UpdateUser;
+                    responseGetFaculty.activated = response.Activated;
+                    responseGetFaculty.updateDate = response.UpdateDate;                    
+                }
+
+                return responseGetFaculty;
+            }
+            //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
+            catch (ChangeConflictException ex)
+            {
+                logger.Error(ex.Message);
+                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
+                {
+                    //Console.WriteLine(ex.Message);
+                    foreach (ObjectChangeConflict occ in entityConnection.dbclayOMSDataContext.ChangeConflicts)
                     {
-                        grade = response.Grade,
-                        gradeID = response.GradeID,
-                        academicYear = response.AcademicYear,
-                        description = response.Description,
-                        percentageFrom = response.PercentageFrom,
-                        percentageTo = response.PercentageTo,
-                        programmeType = response.ProgrammeType,
-                        programmeTypeID = response.ProgrammeTypeID
+                        // All database values overwrite current values.
+                        occ.Resolve(RefreshMode.OverwriteCurrentValues);
+                    }
+                    entityConnection.dbclayOMSDataContext.Transaction.Rollback();
+                }
+                return responseGetFaculty;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message);
+                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
+                {
+                    entityConnection.dbclayOMSDataContext.Transaction.Rollback();
+                }
+                return responseGetFaculty;
+            }
+            finally
+            {
+                if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
+                {
+                    entityConnection.dbclayOMSDataContext.Transaction.Dispose();
+                    entityConnection.dbclayOMSDataContext.Connection.Dispose();
+                    entityConnection.dbclayOMSDataContext.Connection.Close();
+                    entityConnection.dbclayOMSDataContext.Dispose();
+                }
+            }
+        }
+
+        public List<COM.Faculty> GetFaculty(COM.Faculty requestSetFaculty)
+        {
+            logger.Info("GetFaculty");
+            EntityConnection entityConnection = new EntityConnection();
+            List<COM.Faculty> responseGetFaculty = new List<COM.Faculty>();
+
+            try
+            {
+                var getFaculty = from faculty in entityConnection.dbclayOMSDataContext.GetFaculty(requestSetFaculty.facultyName, requestSetFaculty.dean, requestSetFaculty.activated)
+                                          select faculty;
+
+                foreach (var response in getFaculty)
+                {
+                    responseGetFaculty.Add(new COM.Faculty
+                    {
+                        facultyName = response.FacultyName,
+                        facultyID = response.FacultyID,
+                        dean = response.Dean,
+                        yearOfEstablishment = response.YearOfEstablishment,
+                        activated = response.Activated,
+                        updateDate = response.UpdateDate,
+                        updateUser = response.UpdateUser
                     });
                 }
 
-                return responseGetExaminationGrade;
+                return responseGetFaculty;
             }
             //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
             catch (ChangeConflictException ex)
@@ -258,7 +253,7 @@ namespace Clay.OMS.Data
                     }
                     entityConnection.dbclayOMSDataContext.Transaction.Rollback();
                 }
-                return responseGetExaminationGrade;
+                return responseGetFaculty;
             }
             catch (Exception ex)
             {
@@ -267,7 +262,7 @@ namespace Clay.OMS.Data
                 {
                     entityConnection.dbclayOMSDataContext.Transaction.Rollback();
                 }
-                return responseGetExaminationGrade;
+                return responseGetFaculty;
             }
             finally
             {
@@ -280,6 +275,6 @@ namespace Clay.OMS.Data
                 }
             }
         }
-        
+
     }
 }
