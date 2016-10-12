@@ -19,30 +19,32 @@ namespace Clay.OMS.Message
         [Display(Name = "Percentage From")]
         [StringLength(100)]
         [Required(ErrorMessage = "Please provide percentage from.", AllowEmptyStrings = false)]
-        public decimal percentageFrom { get; set; }
+        public System.Nullable<decimal> percentageFrom { get; set; }
 
         [Display(Name = "Percentage To")]
         [StringLength(100)]
         [Required(ErrorMessage = "Please provide percentage to.", AllowEmptyStrings = false)]
-        public decimal percentageTo { get; set; }
+        public System.Nullable<decimal> percentageTo { get; set; }
 
         public string description { get; set; }
 
         [Display(Name = "Academic Year")]       
         [Required(ErrorMessage = "Please provide academic year.", AllowEmptyStrings = false)]
-        public int academicYear { get; set; }
+        public System.Nullable<int> academicYear { get; set; }
 
-        public int programmeTypeID { get; set; }
+        public System.Nullable<int> programmeTypeID { get; set; }
 
         [Display(Name = "Graduation Type")]
         [StringLength(100)]
         [Required(ErrorMessage = "Please provide graduation type.", AllowEmptyStrings = false)]
         public string programmeType { get; set; }
 
+        public string addUser { get; set; }
+
         public string updateUser { get; set; }
 
-        public DateTime updateDate { get; set; }
+        public System.Nullable<DateTime> updateDate { get; set; }
 
-        public Boolean activated { get; set; }
+        public System.Nullable<bool> activated { get; set; }
 }
 }

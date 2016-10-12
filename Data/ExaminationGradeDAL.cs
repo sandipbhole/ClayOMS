@@ -60,7 +60,7 @@ namespace Clay.OMS.Data
 
             try
             {
-                var insertExaminationGrade = from examinationGrade in entityConnection.dbclayOMSDataContext.InsertExaminationGrade(requestSetExaminationGrade.gradeID, requestSetExaminationGrade.grade, requestSetExaminationGrade.percentageFrom, requestSetExaminationGrade.percentageTo, requestSetExaminationGrade.description, requestSetExaminationGrade.academicYear, requestSetExaminationGrade.programmeTypeID, requestSetExaminationGrade.activated, requestSetExaminationGrade.addUser)
+                var insertExaminationGrade = from examinationGrade in entityConnection.dbclayOMSDataContext.InsertExaminationGrade(requestSetExaminationGrade.grade, requestSetExaminationGrade.percentageFrom, requestSetExaminationGrade.percentageTo, requestSetExaminationGrade.description, requestSetExaminationGrade.academicYear, requestSetExaminationGrade.programmeTypeID, requestSetExaminationGrade.activated, requestSetExaminationGrade.addUser)
                                    select examinationGrade;
 
                 return true;
@@ -110,7 +110,7 @@ namespace Clay.OMS.Data
             try
             {
                 var updateExaminationGrade = from examinationGrade in entityConnection.dbclayOMSDataContext.UpdateExaminationGrade(requestSetExaminationGrade.gradeID, requestSetExaminationGrade.grade, requestSetExaminationGrade.percentageFrom, requestSetExaminationGrade.percentageTo, requestSetExaminationGrade.description,requestSetExaminationGrade.academicYear,requestSetExaminationGrade.programmeTypeID,requestSetExaminationGrade.activated,requestSetExaminationGrade.updateUser )
-                                   select examinationGrade;
+                                             select examinationGrade;
 
                 return true;
             }
@@ -159,7 +159,7 @@ namespace Clay.OMS.Data
 
             try
             {
-                var fetchExaminationGrade = from examinationGrade in entityConnection.dbclayOMSDataContext.FetchExaminationGrade(requestSetExaminationGrade.examinationGradeID)
+                var fetchExaminationGrade = from examinationGrade in entityConnection.dbclayOMSDataContext.FetchExaminationGrade(requestSetExaminationGrade.gradeID)
                                   select examinationGrade;
 
                 foreach (var response in fetchExaminationGrade)
@@ -174,7 +174,7 @@ namespace Clay.OMS.Data
                     requestSetExaminationGrade.percentageFrom = response.PercentageFrom;
                     responseGetExaminationGrade.percentageTo = response.PercentageTo;
                     responseGetExaminationGrade.description = response.Description;
-                    responseGetExaminationGrade.academicYear = response.AcademicYear
+                    responseGetExaminationGrade.academicYear = response.AcademicYear;
                 }
 
                 return responseGetExaminationGrade;
@@ -224,7 +224,7 @@ namespace Clay.OMS.Data
 
             try
             {
-                var getExaminationGrade = from examinationGrade in entityConnection.dbclayOMSDataContext.GetExaminationGrade(requestSetExaminationGrade.examinationGrade, requestSetExaminationGrade.state, requestSetExaminationGrade.country)
+                var getExaminationGrade = from examinationGrade in entityConnection.dbclayOMSDataContext.GetExaminationGrade(requestSetExaminationGrade.grade, requestSetExaminationGrade.programmeType,requestSetExaminationGrade.academicYear,requestSetExaminationGrade.activated)
                                   select examinationGrade;
 
                 foreach (var response in getExaminationGrade)
