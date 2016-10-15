@@ -370,20 +370,6 @@ namespace Clay.OMS.Data
 			return ((ISingleResult<GetDistrictResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertDegree")]
-		public ISingleResult<InsertDegreeResult> InsertDegree([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string degree, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> programmeTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), degree, programmeTypeID, activated, addUser);
-			return ((ISingleResult<InsertDegreeResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateDegree")]
-		public ISingleResult<UpdateDegreeResult> UpdateDegree([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> degreeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string degree, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> programmeTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string updateUser)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), degreeID, degree, programmeTypeID, activated, updateUser);
-			return ((ISingleResult<UpdateDegreeResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetState")]
 		public ISingleResult<GetStateResult> GetState([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(150)")] string state, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string country)
 		{
@@ -412,13 +398,6 @@ namespace Clay.OMS.Data
 			return ((ISingleResult<GetDegreeResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetProgrammeType")]
-		public ISingleResult<GetProgrammeTypeResult> GetProgrammeType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string programmeType)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programmeType);
-			return ((ISingleResult<GetProgrammeTypeResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertProgramme")]
 		public ISingleResult<InsertProgrammeResult> InsertProgramme([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> degreeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(75)")] string programme, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> facultyID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> programmeTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string programmeDuration, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string coordinator, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string stipulatedPeriod, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string programmeDescription, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> programmeOrder, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
 		{
@@ -445,6 +424,48 @@ namespace Clay.OMS.Data
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programmeID, degreeID, programme, facultyID, programmeTypeID, programmeDuration, coordinator, stipulatedPeriod, programmeDescription, programmeOrder, activated, updateUser);
 			return ((ISingleResult<UpdateProgrammeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertProgrammeType")]
+		public ISingleResult<InsertProgrammeTypeResult> InsertProgrammeType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string programmeType, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programmeType, activated, addUser);
+			return ((ISingleResult<InsertProgrammeTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateProgrammeType")]
+		public ISingleResult<UpdateProgrammeTypeResult> UpdateProgrammeType([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProgrammeTypeID", DbType="BigInt")] System.Nullable<long> programmeTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="ProgrammeType", DbType="NVarChar(50)")] string programmeType, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string updateUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programmeTypeID, programmeType, activated, updateUser);
+			return ((ISingleResult<UpdateProgrammeTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FetchProgrammeType")]
+		public ISingleResult<FetchProgrammeTypeResult> FetchProgrammeType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> degreeID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), degreeID);
+			return ((ISingleResult<FetchProgrammeTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetProgrammeType")]
+		public ISingleResult<GetProgrammeTypeResult> GetProgrammeType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string programmeType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programmeType);
+			return ((ISingleResult<GetProgrammeTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateDegree")]
+		public ISingleResult<UpdateDegreeResult> UpdateDegree([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> degreeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string degree, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> programmeTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string updateUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), degreeID, degree, programmeTypeID, activated, updateUser);
+			return ((ISingleResult<UpdateDegreeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertDegree")]
+		public ISingleResult<InsertDegreeResult> InsertDegree([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string degree, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> programmeTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), degree, programmeTypeID, activated, addUser);
+			return ((ISingleResult<InsertDegreeResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -5040,76 +5061,6 @@ namespace Clay.OMS.Data
 		}
 	}
 	
-	public partial class InsertDegreeResult
-	{
-		
-		private System.Nullable<int> _ErrorNumber;
-		
-		private string _ErrorMessage;
-		
-		public InsertDegreeResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
-		public System.Nullable<int> ErrorNumber
-		{
-			get
-			{
-				return this._ErrorNumber;
-			}
-			set
-			{
-				if ((this._ErrorNumber != value))
-				{
-					this._ErrorNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
-		public string ErrorMessage
-		{
-			get
-			{
-				return this._ErrorMessage;
-			}
-			set
-			{
-				if ((this._ErrorMessage != value))
-				{
-					this._ErrorMessage = value;
-				}
-			}
-		}
-	}
-	
-	public partial class UpdateDegreeResult
-	{
-		
-		private int _Result;
-		
-		public UpdateDegreeResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="Int NOT NULL")]
-		public int Result
-		{
-			get
-			{
-				return this._Result;
-			}
-			set
-			{
-				if ((this._Result != value))
-				{
-					this._Result = value;
-				}
-			}
-		}
-	}
-	
 	public partial class GetStateResult
 	{
 		
@@ -5461,140 +5412,6 @@ namespace Clay.OMS.Data
 				if ((this._UpdateDate != value))
 				{
 					this._UpdateDate = value;
-				}
-			}
-		}
-	}
-	
-	public partial class GetProgrammeTypeResult
-	{
-		
-		private int _ProgrammeTypeID;
-		
-		private string _ProgrammeType;
-		
-		private System.Nullable<System.DateTime> _UpdateDate;
-		
-		private string _UpdateUser;
-		
-		private System.Nullable<bool> _Activated;
-		
-		private string _UpdateUser1;
-		
-		private System.Nullable<System.DateTime> _UpdateDate1;
-		
-		public GetProgrammeTypeResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeTypeID", DbType="Int NOT NULL")]
-		public int ProgrammeTypeID
-		{
-			get
-			{
-				return this._ProgrammeTypeID;
-			}
-			set
-			{
-				if ((this._ProgrammeTypeID != value))
-				{
-					this._ProgrammeTypeID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeType", DbType="NVarChar(50)")]
-		public string ProgrammeType
-		{
-			get
-			{
-				return this._ProgrammeType;
-			}
-			set
-			{
-				if ((this._ProgrammeType != value))
-				{
-					this._ProgrammeType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UpdateDate
-		{
-			get
-			{
-				return this._UpdateDate;
-			}
-			set
-			{
-				if ((this._UpdateDate != value))
-				{
-					this._UpdateDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50)")]
-		public string UpdateUser
-		{
-			get
-			{
-				return this._UpdateUser;
-			}
-			set
-			{
-				if ((this._UpdateUser != value))
-				{
-					this._UpdateUser = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit")]
-		public System.Nullable<bool> Activated
-		{
-			get
-			{
-				return this._Activated;
-			}
-			set
-			{
-				if ((this._Activated != value))
-				{
-					this._Activated = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser1", DbType="NVarChar(50)")]
-		public string UpdateUser1
-		{
-			get
-			{
-				return this._UpdateUser1;
-			}
-			set
-			{
-				if ((this._UpdateUser1 != value))
-				{
-					this._UpdateUser1 = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate1", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UpdateDate1
-		{
-			get
-			{
-				return this._UpdateDate1;
-			}
-			set
-			{
-				if ((this._UpdateDate1 != value))
-				{
-					this._UpdateDate1 = value;
 				}
 			}
 		}
@@ -6257,6 +6074,378 @@ namespace Clay.OMS.Data
 				if ((this._Result != value))
 				{
 					this._Result = value;
+				}
+			}
+		}
+	}
+	
+	public partial class InsertProgrammeTypeResult
+	{
+		
+		private System.Nullable<int> _ErrorNumber;
+		
+		private string _ErrorMessage;
+		
+		public InsertProgrammeTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
+		public System.Nullable<int> ErrorNumber
+		{
+			get
+			{
+				return this._ErrorNumber;
+			}
+			set
+			{
+				if ((this._ErrorNumber != value))
+				{
+					this._ErrorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
+		public string ErrorMessage
+		{
+			get
+			{
+				return this._ErrorMessage;
+			}
+			set
+			{
+				if ((this._ErrorMessage != value))
+				{
+					this._ErrorMessage = value;
+				}
+			}
+		}
+	}
+	
+	public partial class UpdateProgrammeTypeResult
+	{
+		
+		private int _Result;
+		
+		public UpdateProgrammeTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="Int NOT NULL")]
+		public int Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+	}
+	
+	public partial class FetchProgrammeTypeResult
+	{
+		
+		private int _ProgrammeTypeID;
+		
+		private string _ProgrammeType;
+		
+		private bool _Activated;
+		
+		private string _UpdateUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		public FetchProgrammeTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeTypeID", DbType="Int NOT NULL")]
+		public int ProgrammeTypeID
+		{
+			get
+			{
+				return this._ProgrammeTypeID;
+			}
+			set
+			{
+				if ((this._ProgrammeTypeID != value))
+				{
+					this._ProgrammeTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeType", DbType="NVarChar(50)")]
+		public string ProgrammeType
+		{
+			get
+			{
+				return this._ProgrammeType;
+			}
+			set
+			{
+				if ((this._ProgrammeType != value))
+				{
+					this._ProgrammeType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetProgrammeTypeResult
+	{
+		
+		private int _ProgrammeTypeID;
+		
+		private string _ProgrammeType;
+		
+		private System.Nullable<System.DateTime> _UpdateDate;
+		
+		private string _UpdateUser;
+		
+		private System.Nullable<bool> _Activated;
+		
+		private string _UpdateUser1;
+		
+		private System.Nullable<System.DateTime> _UpdateDate1;
+		
+		public GetProgrammeTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeTypeID", DbType="Int NOT NULL")]
+		public int ProgrammeTypeID
+		{
+			get
+			{
+				return this._ProgrammeTypeID;
+			}
+			set
+			{
+				if ((this._ProgrammeTypeID != value))
+				{
+					this._ProgrammeTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeType", DbType="NVarChar(50)")]
+		public string ProgrammeType
+		{
+			get
+			{
+				return this._ProgrammeType;
+			}
+			set
+			{
+				if ((this._ProgrammeType != value))
+				{
+					this._ProgrammeType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50)")]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit")]
+		public System.Nullable<bool> Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser1", DbType="NVarChar(50)")]
+		public string UpdateUser1
+		{
+			get
+			{
+				return this._UpdateUser1;
+			}
+			set
+			{
+				if ((this._UpdateUser1 != value))
+				{
+					this._UpdateUser1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate1", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdateDate1
+		{
+			get
+			{
+				return this._UpdateDate1;
+			}
+			set
+			{
+				if ((this._UpdateDate1 != value))
+				{
+					this._UpdateDate1 = value;
+				}
+			}
+		}
+	}
+	
+	public partial class UpdateDegreeResult
+	{
+		
+		private int _Result;
+		
+		public UpdateDegreeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="Int NOT NULL")]
+		public int Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+	}
+	
+	public partial class InsertDegreeResult
+	{
+		
+		private System.Nullable<int> _ErrorNumber;
+		
+		private string _ErrorMessage;
+		
+		public InsertDegreeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
+		public System.Nullable<int> ErrorNumber
+		{
+			get
+			{
+				return this._ErrorNumber;
+			}
+			set
+			{
+				if ((this._ErrorNumber != value))
+				{
+					this._ErrorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
+		public string ErrorMessage
+		{
+			get
+			{
+				return this._ErrorMessage;
+			}
+			set
+			{
+				if ((this._ErrorMessage != value))
+				{
+					this._ErrorMessage = value;
 				}
 			}
 		}

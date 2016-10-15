@@ -58,8 +58,10 @@
     <Compile Include="DesignationDAL.cs" />
     <Compile Include="DistrictDAL.cs" />
     <Compile Include="EntityConnection.cs" />
+    <Compile Include="ExaminationGradeDAL.cs" />
     <Compile Include="FacultyDAL.cs" />
     <Compile Include="ProgrammeDAL.cs" />
+    <Compile Include="ProgrammeTypeDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
