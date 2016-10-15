@@ -418,6 +418,34 @@ namespace Clay.OMS.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programmeType);
 			return ((ISingleResult<GetProgrammeTypeResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertProgramme")]
+		public ISingleResult<InsertProgrammeResult> InsertProgramme([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> degreeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(75)")] string programme, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> facultyID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> programmeTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string programmeDuration, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string coordinator, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string stipulatedPeriod, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string programmeDescription, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> programmeOrder, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), degreeID, programme, facultyID, programmeTypeID, programmeDuration, coordinator, stipulatedPeriod, programmeDescription, programmeOrder, activated, addUser);
+			return ((ISingleResult<InsertProgrammeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetProgramme")]
+		public ISingleResult<GetProgrammeResult> GetProgramme([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string programme, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string degree, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string programmeType, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string faculty, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programme, degree, programmeType, faculty, activated);
+			return ((ISingleResult<GetProgrammeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FetchProgramme")]
+		public ISingleResult<FetchProgrammeResult> FetchProgramme([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> programmeID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programmeID);
+			return ((ISingleResult<FetchProgrammeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateProgramme")]
+		public ISingleResult<UpdateProgrammeResult> UpdateProgramme([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> programmeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> degreeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(75)")] string programme, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> facultyID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> programmeTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string programmeDuration, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string coordinator, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string stipulatedPeriod, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(MAX)")] string programmeDescription, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> programmeOrder, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string updateUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), programmeID, degreeID, programme, facultyID, programmeTypeID, programmeDuration, coordinator, stipulatedPeriod, programmeDescription, programmeOrder, activated, updateUser);
+			return ((ISingleResult<UpdateProgrammeResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BloodGroup")]
@@ -5567,6 +5595,668 @@ namespace Clay.OMS.Data
 				if ((this._UpdateDate1 != value))
 				{
 					this._UpdateDate1 = value;
+				}
+			}
+		}
+	}
+	
+	public partial class InsertProgrammeResult
+	{
+		
+		private System.Nullable<int> _ErrorNumber;
+		
+		private string _ErrorMessage;
+		
+		public InsertProgrammeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
+		public System.Nullable<int> ErrorNumber
+		{
+			get
+			{
+				return this._ErrorNumber;
+			}
+			set
+			{
+				if ((this._ErrorNumber != value))
+				{
+					this._ErrorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
+		public string ErrorMessage
+		{
+			get
+			{
+				return this._ErrorMessage;
+			}
+			set
+			{
+				if ((this._ErrorMessage != value))
+				{
+					this._ErrorMessage = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetProgrammeResult
+	{
+		
+		private System.Nullable<int> _DegreeID;
+		
+		private string _Degree;
+		
+		private int _ProgrammeID;
+		
+		private string _Programme;
+		
+		private System.Nullable<int> _FacultyID;
+		
+		private string _FacultyName;
+		
+		private System.Nullable<int> _ProgrammeTypeID;
+		
+		private string _ProgrammeType;
+		
+		private string _ProgrammeDuration;
+		
+		private string _Coordinator;
+		
+		private string _StipulatedPeriod;
+		
+		private string _ProgrammeDescription;
+		
+		private System.Nullable<int> _ProgrammeOrder;
+		
+		private bool _Activated;
+		
+		private string _UpdateUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		public GetProgrammeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DegreeID", DbType="Int")]
+		public System.Nullable<int> DegreeID
+		{
+			get
+			{
+				return this._DegreeID;
+			}
+			set
+			{
+				if ((this._DegreeID != value))
+				{
+					this._DegreeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Degree", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Degree
+		{
+			get
+			{
+				return this._Degree;
+			}
+			set
+			{
+				if ((this._Degree != value))
+				{
+					this._Degree = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeID", DbType="Int NOT NULL")]
+		public int ProgrammeID
+		{
+			get
+			{
+				return this._ProgrammeID;
+			}
+			set
+			{
+				if ((this._ProgrammeID != value))
+				{
+					this._ProgrammeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Programme", DbType="NVarChar(75) NOT NULL", CanBeNull=false)]
+		public string Programme
+		{
+			get
+			{
+				return this._Programme;
+			}
+			set
+			{
+				if ((this._Programme != value))
+				{
+					this._Programme = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FacultyID", DbType="Int")]
+		public System.Nullable<int> FacultyID
+		{
+			get
+			{
+				return this._FacultyID;
+			}
+			set
+			{
+				if ((this._FacultyID != value))
+				{
+					this._FacultyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FacultyName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FacultyName
+		{
+			get
+			{
+				return this._FacultyName;
+			}
+			set
+			{
+				if ((this._FacultyName != value))
+				{
+					this._FacultyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeTypeID", DbType="Int")]
+		public System.Nullable<int> ProgrammeTypeID
+		{
+			get
+			{
+				return this._ProgrammeTypeID;
+			}
+			set
+			{
+				if ((this._ProgrammeTypeID != value))
+				{
+					this._ProgrammeTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeType", DbType="NVarChar(50)")]
+		public string ProgrammeType
+		{
+			get
+			{
+				return this._ProgrammeType;
+			}
+			set
+			{
+				if ((this._ProgrammeType != value))
+				{
+					this._ProgrammeType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeDuration", DbType="NVarChar(50)")]
+		public string ProgrammeDuration
+		{
+			get
+			{
+				return this._ProgrammeDuration;
+			}
+			set
+			{
+				if ((this._ProgrammeDuration != value))
+				{
+					this._ProgrammeDuration = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Coordinator", DbType="NVarChar(50)")]
+		public string Coordinator
+		{
+			get
+			{
+				return this._Coordinator;
+			}
+			set
+			{
+				if ((this._Coordinator != value))
+				{
+					this._Coordinator = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StipulatedPeriod", DbType="NVarChar(50)")]
+		public string StipulatedPeriod
+		{
+			get
+			{
+				return this._StipulatedPeriod;
+			}
+			set
+			{
+				if ((this._StipulatedPeriod != value))
+				{
+					this._StipulatedPeriod = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeDescription", DbType="NVarChar(MAX)")]
+		public string ProgrammeDescription
+		{
+			get
+			{
+				return this._ProgrammeDescription;
+			}
+			set
+			{
+				if ((this._ProgrammeDescription != value))
+				{
+					this._ProgrammeDescription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeOrder", DbType="Int")]
+		public System.Nullable<int> ProgrammeOrder
+		{
+			get
+			{
+				return this._ProgrammeOrder;
+			}
+			set
+			{
+				if ((this._ProgrammeOrder != value))
+				{
+					this._ProgrammeOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+	}
+	
+	public partial class FetchProgrammeResult
+	{
+		
+		private System.Nullable<int> _DegreeID;
+		
+		private string _Degree;
+		
+		private int _ProgrammeID;
+		
+		private string _Programme;
+		
+		private System.Nullable<int> _FacultyID;
+		
+		private string _FacultyName;
+		
+		private System.Nullable<int> _ProgrammeTypeID;
+		
+		private string _ProgrammeType;
+		
+		private string _ProgrammeDuration;
+		
+		private string _Coordinator;
+		
+		private string _StipulatedPeriod;
+		
+		private string _ProgrammeDescription;
+		
+		private System.Nullable<int> _ProgrammeOrder;
+		
+		private bool _Activated;
+		
+		private string _UpdateUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		public FetchProgrammeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DegreeID", DbType="Int")]
+		public System.Nullable<int> DegreeID
+		{
+			get
+			{
+				return this._DegreeID;
+			}
+			set
+			{
+				if ((this._DegreeID != value))
+				{
+					this._DegreeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Degree", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Degree
+		{
+			get
+			{
+				return this._Degree;
+			}
+			set
+			{
+				if ((this._Degree != value))
+				{
+					this._Degree = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeID", DbType="Int NOT NULL")]
+		public int ProgrammeID
+		{
+			get
+			{
+				return this._ProgrammeID;
+			}
+			set
+			{
+				if ((this._ProgrammeID != value))
+				{
+					this._ProgrammeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Programme", DbType="NVarChar(75) NOT NULL", CanBeNull=false)]
+		public string Programme
+		{
+			get
+			{
+				return this._Programme;
+			}
+			set
+			{
+				if ((this._Programme != value))
+				{
+					this._Programme = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FacultyID", DbType="Int")]
+		public System.Nullable<int> FacultyID
+		{
+			get
+			{
+				return this._FacultyID;
+			}
+			set
+			{
+				if ((this._FacultyID != value))
+				{
+					this._FacultyID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FacultyName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string FacultyName
+		{
+			get
+			{
+				return this._FacultyName;
+			}
+			set
+			{
+				if ((this._FacultyName != value))
+				{
+					this._FacultyName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeTypeID", DbType="Int")]
+		public System.Nullable<int> ProgrammeTypeID
+		{
+			get
+			{
+				return this._ProgrammeTypeID;
+			}
+			set
+			{
+				if ((this._ProgrammeTypeID != value))
+				{
+					this._ProgrammeTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeType", DbType="NVarChar(50)")]
+		public string ProgrammeType
+		{
+			get
+			{
+				return this._ProgrammeType;
+			}
+			set
+			{
+				if ((this._ProgrammeType != value))
+				{
+					this._ProgrammeType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeDuration", DbType="NVarChar(50)")]
+		public string ProgrammeDuration
+		{
+			get
+			{
+				return this._ProgrammeDuration;
+			}
+			set
+			{
+				if ((this._ProgrammeDuration != value))
+				{
+					this._ProgrammeDuration = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Coordinator", DbType="NVarChar(50)")]
+		public string Coordinator
+		{
+			get
+			{
+				return this._Coordinator;
+			}
+			set
+			{
+				if ((this._Coordinator != value))
+				{
+					this._Coordinator = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StipulatedPeriod", DbType="NVarChar(50)")]
+		public string StipulatedPeriod
+		{
+			get
+			{
+				return this._StipulatedPeriod;
+			}
+			set
+			{
+				if ((this._StipulatedPeriod != value))
+				{
+					this._StipulatedPeriod = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeDescription", DbType="NVarChar(MAX)")]
+		public string ProgrammeDescription
+		{
+			get
+			{
+				return this._ProgrammeDescription;
+			}
+			set
+			{
+				if ((this._ProgrammeDescription != value))
+				{
+					this._ProgrammeDescription = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeOrder", DbType="Int")]
+		public System.Nullable<int> ProgrammeOrder
+		{
+			get
+			{
+				return this._ProgrammeOrder;
+			}
+			set
+			{
+				if ((this._ProgrammeOrder != value))
+				{
+					this._ProgrammeOrder = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+	}
+	
+	public partial class UpdateProgrammeResult
+	{
+		
+		private int _Result;
+		
+		public UpdateProgrammeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="Int NOT NULL")]
+		public int Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
 				}
 			}
 		}

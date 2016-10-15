@@ -3,6 +3,17 @@ UserName : Administrator
 Password : Administrator
 
 JDV Application
-
 User Name : balbina
 Password : valerian
+
+MySQL Server Details
+Server : 192.168.0.254
+User Name: root
+Password : rootjdv
+Default Schema : jdvfinal
+
+Server Details
+UserName : administrator
+Password : jdvidy@peeth$321
+
+Deep Mobile No. : 9325511994
