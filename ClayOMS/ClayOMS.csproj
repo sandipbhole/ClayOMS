@@ -175,7 +175,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\FacultyMasterController.cs" />
+    <Compile Include="Controllers\FacultyController.cs" />
     <Compile Include="Controllers\ModuleMasterController.cs" />
     <Compile Include="Controllers\ScreensController.cs" />
     <Compile Include="Controllers\StaffSubjectController.cs" />
@@ -1228,7 +1228,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="plugins\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap-dropdownhover.js" />
@@ -1458,11 +1458,11 @@
     <Content Include="Views\StaffSubject\AddStaffSubject.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
-    <Content Include="Views\FacultyMaster\Faculty.cshtml" />
     <Content Include="Scripts\OtherJS\jquery.bootstrap-responsive-tabs.min.js.map" />
     <Content Include="Scripts\OtherJS\MultiSelect\less\bootstrap-multiselect.less" />
-    <Content Include="Views\FacultyMaster\AddFaculty.cshtml" />
-    <Content Include="Views\FacultyMaster\EditFaculty.cshtml" />
+    <Content Include="Views\Faculty\Faculty.cshtml" />
+    <Content Include="Views\Faculty\InsertFaculty.cshtml" />
+    <Content Include="Views\Faculty\UpdateFaculty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

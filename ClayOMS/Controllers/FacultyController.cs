@@ -12,7 +12,7 @@ using System.Net;
 
 namespace ClayOMS.Controllers
 {
-    public class FacultyMasterController : Controller
+    public class FacultyController : Controller
     {
 
         COD.FacultyDAL facultyDAL = new COD.FacultyDAL();
@@ -103,13 +103,13 @@ namespace ClayOMS.Controllers
             }
         }
 
-        public ActionResult AddFaculty()
+        public ActionResult InsertFaculty()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddFaculty(COM.Faculty requestSetFaculty, string command)
+        public ActionResult InsertFaculty(COM.Faculty requestSetFaculty, string command)
         {
             bool result = false;
             //if (Session["UserName"] == null)
@@ -156,10 +156,10 @@ namespace ClayOMS.Controllers
 
 
        
-        public ActionResult EditFaculty(long facultyID)
+        public ActionResult UpdateFaculty(long facultyID)
         {
             COM.Faculty requestSetFaculty = new COM.Faculty();
-
+            requestSetFaculty.facultyID = facultyID;
             //if (Session["UserName"] == null)
             //    return RedirectToAction("Login", "Login");
 
@@ -179,8 +179,10 @@ namespace ClayOMS.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditFaculty(COM.Faculty requestSetFaculty, string command)
+        public ActionResult UpdateFaculty(COM.Faculty requestSetFaculty, string command)
         {
+
+            requestSetFaculty.updateUser = "Shweta";
             //if (Session["UserName"] == null)
             //    return RedirectToAction("Login", "Login");
 

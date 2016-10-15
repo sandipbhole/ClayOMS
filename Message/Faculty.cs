@@ -21,6 +21,8 @@ namespace Clay.OMS.Message
         [Required(ErrorMessage = "Please provide faculty name.", AllowEmptyStrings = false)]
         public string facultyName { get; set; }
 
+
+      
         [Display(Name = "Year Of Establishment")]
         public System.Nullable<int> yearOfEstablishment { get; set; }
 
