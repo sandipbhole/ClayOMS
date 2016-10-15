@@ -9,7 +9,11 @@ namespace Clay.OMS.Message
 {
     public class Faculty
     {
-        public string facultyID {get; set;}
+        public long facultyID {get; set; }
+
+        [Display(Name = "Faculty Code")]
+        [StringLength(20)]
+        public string code { get; set; }
 
         [Display(Name = "Faculty Name")]
         [StringLength(50)]

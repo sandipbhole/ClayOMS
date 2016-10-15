@@ -60,8 +60,8 @@ namespace Clay.OMS.Data
 
             try
             {
-                var insertFaculty = from faculty in entityConnection.dbclayOMSDataContext.InsertFaculty(requestSetFaculty.facultyID, requestSetFaculty.facultyName, requestSetFaculty.yearOfEstablishment, requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.addUser)
-                                    select faculty;
+                var insertFaculty = from faculty in entityConnection.dbclayOMSDataContext.InsertFaculty(requestSetFaculty.facultyID,requestSetFaculty.facultyName,requestSetFaculty.yearOfEstablishment,requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.addUser)
+                                             select faculty;
 
                 return true;
             }
@@ -111,7 +111,7 @@ namespace Clay.OMS.Data
 
             try
             {
-                var updateFaculty = from faculty in entityConnection.dbclayOMSDataContext.UpdateFaculty(requestSetFaculty.facultyID, requestSetFaculty.facultyName, requestSetFaculty.yearOfEstablishment, requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.updateUser)
+                var updateFaculty = from faculty in entityConnection.dbclayOMSDataContext.UpdateFaculty(requestSetFaculty.facultyID,requestSetFaculty.code, requestSetFaculty.facultyName, requestSetFaculty.yearOfEstablishment, requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.updateUser)
                                              select faculty;
 
                 return true;
