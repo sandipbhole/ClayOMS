@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 15, 14.375" name="JDVData">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 17.625, 20.75" name="JDVData">
   <DataContextMoniker Name="/ClayOMSDataContext" />
   <nestedChildShapes>
     <classShape Id="284fb0c8-9e97-4ad1-9d53-e7957ae59bc3" absoluteBounds="0.75, 0.75, 2, 1.1939925130208335">
@@ -132,6 +132,36 @@
       <DataClassMoniker Name="/ClayOMSDataContext/Faculty" />
       <nestedChildShapes>
         <elementListCompartment Id="5973ce4c-e947-404f-83d5-31b0f1d4e2d4" absoluteBounds="1.7650000000000001, 3.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1ca11fbc-968a-4962-8056-f29fd87fdc92" absoluteBounds="9.375, 12.75, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ClayOMSDataContext/StaffCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="662d8825-2858-45e9-9ba6-fac5dd7a1c57" absoluteBounds="9.39, 13.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="53fa99dc-207f-4b33-991a-8a943b4c5d11" absoluteBounds="12.375, 11.75, 2, 8.69374837239583">
+      <DataClassMoniker Name="/ClayOMSDataContext/StaffPersonalInformation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6566b069-384d-48f9-8715-fc2e2d19cc4f" absoluteBounds="12.39, 12.21, 1.9700000000000002, 8.1337483723958321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="86bf8880-20cb-419f-b070-119c586f49b7" absoluteBounds="12.375, 5.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ClayOMSDataContext/StaffPhoto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc9421bc-38e1-4697-9a65-b7003901b014" absoluteBounds="12.39, 6.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="02706803-0ed7-4c2e-a6ff-206c04908143" absoluteBounds="3.375, 14.75, 2, 1.9631982421874987">
+      <DataClassMoniker Name="/ClayOMSDataContext/StaffType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="36af64aa-42bb-44e9-a6ad-ad9d3d3391c5" absoluteBounds="3.39, 15.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13e04a4f-4e84-4bfb-a7d3-e6e8fa8ae2c4" absoluteBounds="15.375, 0.75, 2, 2.5401025390625005">
+      <DataClassMoniker Name="/ClayOMSDataContext/StaffSubject" />
+      <nestedChildShapes>
+        <elementListCompartment Id="20e1e6bf-c558-4d63-8891-c5b5514033bf" absoluteBounds="15.39, 1.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
