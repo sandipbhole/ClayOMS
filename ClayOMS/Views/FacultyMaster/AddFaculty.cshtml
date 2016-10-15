@@ -1,0 +1,79 @@
+﻿@model Clay.OMS.Message.Faculty
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <br />
+    <center>
+        <h5>
+            <strong>Add Faculty</strong>
+        </h5>
+    </center>
+    <div class="col-md-offset-2 col-md-8" style="border-radius: 5px;text-align: center;background-color: #fff;border: solid 1px #808080;">
+        <center>
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "Device not saved successfully.", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label(" ", new { @class = "control-label col-md-2" })
+                    <div class="col-md-5">
+                        @Html.Label("", (string)ViewBag.message, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.facultyID, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(model => model.facultyID, new { @class = "form-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.facultyID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.facultyName,"Faculty", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(model => model.facultyName, new { @class = "form-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.facultyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.yearOfEstablishment, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(model => model.yearOfEstablishment, new { @class = "form-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.yearOfEstablishment, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.dean, "Dean",htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-5">
+                        @Html.TextBoxFor(model => model.dean, new { @class = "form-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.dean, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+         
+                <div class="form-group">
+                    @Html.LabelFor(model => model.activated, "IsActive", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-5">
+                        @*@Html.CheckBoxFor(model => model.activated, new { @class = "form-control", @autofocus = "autofocus" })*@
+                        @Html.CheckBoxFor(model => model.activated.Value)
+                        @Html.ValidationMessageFor(model => model.activated, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-10">
+                        <input type="submit" name="command" value="Save" class="btn btn-primary" />
+                      
+                    </div>
+                </div>
+            </div>
+        </center>
+
+        <div class="col-md-3">
+            @Html.ActionLink("Back to List", "Device", "Device") <div>&nbsp;</div>
+        </div>
+    </div>
+}
+
+

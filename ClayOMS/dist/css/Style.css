@@ -1,0 +1,10 @@
+﻿body {
+}
+.content-wrapper, .right-side {
+    min-height: 100%;
+    background-color: #fff;
+    z-index: 800;
+}
+#hovericon:hover{
+    color:#0026ff;
+}

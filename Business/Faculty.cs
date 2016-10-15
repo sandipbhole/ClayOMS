@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Clay.OMS.Data;
+//using Clay.OMS.Data;
 
 namespace Clay.OMS.Business
 {
-    public class FacultyBAL
-    {
+    //public class FacultyBAL
+    //{
 
-    }
+    //}
 }

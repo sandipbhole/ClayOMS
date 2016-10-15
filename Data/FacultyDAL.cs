@@ -60,8 +60,8 @@ namespace Clay.OMS.Data
 
             try
             {
-                var insertFaculty = from faculty in entityConnection.dbclayOMSDataContext.InsertFaculty(requestSetFaculty.facultyID,requestSetFaculty.facultyName,requestSetFaculty.yearOfEstablishment,requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.addUser)
-                                             select faculty;
+                var insertFaculty = from faculty in entityConnection.dbclayOMSDataContext.InsertFaculty(requestSetFaculty.facultyID, requestSetFaculty.facultyName, requestSetFaculty.yearOfEstablishment, requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.addUser)
+                                    select faculty;
 
                 return true;
             }
@@ -100,6 +100,8 @@ namespace Clay.OMS.Data
                     entityConnection.dbclayOMSDataContext.Dispose();
                 }
             }
+
+
         }
 
         public bool UpdateFaculty(COM.Faculty requestSetFaculty)
@@ -169,7 +171,7 @@ namespace Clay.OMS.Data
                     responseGetFaculty.yearOfEstablishment = response.YearOfEstablishment;
                     responseGetFaculty.dean = response.Dean;
                     responseGetFaculty.updateUser = response.UpdateUser;
-                    responseGetFaculty.activated = response.Activated;
+                  //  responseGetFaculty.activated = response.Activated;
                     responseGetFaculty.updateDate = response.UpdateDate;                    
                 }
 

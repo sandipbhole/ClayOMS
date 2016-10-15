@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+
+    <div class="pageHeader clearfix container">
+        <div class="pull-left col-xs-12 col-sm-12 col-md-4 col-lg-6 no-sm-gutter no-md-gutter">
+            <h3 class="pageHeading">
+                Faculty Master
+            </h3>
+        </div>
+
+        <div class="pull-right col-xs-12 col-sm-12 col-md-8 col-lg-6 no-sm-gutter no-md-gutter clearfix">
+            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 no-sm-gutter no-md-gutter">
+                <input type="text" class="UsersearchField" id="txtSearch"
+                       name="searchText" placeholder="Type for searching Faculty" />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 no-sm-gutter no-md-gutter">
+                <input type="text" class="UsersearchField" id="txtDean"
+                       name="searchText" placeholder="Type for searching Faculty" />
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-5 col-lg-6 no-sm-gutter no-md-gutter">
+                <select id="ddtActivated"
+                        name="searchText" placeholder="Type for searching Faculty" />
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 no-xs-gutter-left">
+                <input type="button" class="btn btn-primary" id="btnSearch" value="Search" style="background-color:#1aa188 ; margin-left: -23px;" />
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-4 col-lg-3 no-sm-gutter no-md-gutter">
+                <input type="button" class="btn btn-primary" id="btnAdd" value="Add Faculty" style="background-color:#1aa188; margin-left: -77px;" onclick="location.href='@Url.Action("AddFaculty", "FacultyMaster")'" />
+            </div>
+        </div>
+
+    </div>
+<div>
+    <table id="grid" class=" table  table-bordered table-responsive">
+
+    </table>
+</div>
+    <div id="pager"></div>
+
+    <div id="dialog-confirm" style="overflow: hidden;display: none;" title="User Delete Confirmation">
+        <p style="padding-top:10px;"><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 10px 0;"></span>Are you sure you want to delete this User?</p>
+    </div>
+
+    <div id="DivAddUpdateUsers" style="overflow: hidden;"></div>
+
+    @*<script src="~/Scripts/JS/ClientMaster.js"></script>*@
+    <script src="~/Scripts/JS/FacultyMasterJS.js"></script>
+    <script src="~/Scripts/i18n/grid.locale-en.js"></script>

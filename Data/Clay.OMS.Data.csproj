@@ -55,6 +55,7 @@
       <DependentUpon>ClayOMSData.dbml</DependentUpon>
     </Compile>
     <Compile Include="DegreeDAL.cs" />
+    <Compile Include="DepartmentDAL.cs" />
     <Compile Include="DistrictDAL.cs" />
     <Compile Include="EntityConnection.cs" />
     <Compile Include="ExaminationGradeDAL.cs" />
@@ -86,6 +87,12 @@
     <None Include="ClayOMSData.dbml.layout">
       <DependentUpon>ClayOMSData.dbml</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Message\Clay.OMS.Message.csproj">
+      <Project>{742daf4b-1d90-4f76-ab3c-4af3485d9052}</Project>
+      <Name>Clay.OMS.Message</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

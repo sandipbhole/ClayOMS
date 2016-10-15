@@ -39,7 +39,8 @@ namespace Clay.OMS.Data
 
                 dbclayOMSDataContext = new ClayOMSDataContext(clayOMSConnectionString);
 
-                if (dbclayOMSDataContext.Connection.State == ConnectionState.Open)
+                if 
+                    (dbclayOMSDataContext.Connection.State == ConnectionState.Open)
                     dbclayOMSDataContext.Connection.Close();
 
                 dbclayOMSDataContext.Connection.Open();
