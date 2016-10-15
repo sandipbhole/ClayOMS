@@ -25,10 +25,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.facultyID, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.code, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-5">
-                        @Html.TextBoxFor(model => model.facultyID, new { @class = "form-control", @autofocus = "autofocus" })
-                        @Html.ValidationMessageFor(model => model.facultyID, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.code, new { @class = "form-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
@@ -56,8 +56,8 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.activated, "IsActive", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-5">
-                        @*@Html.CheckBoxFor(model => model.activated, new { @class = "form-control", @autofocus = "autofocus" })*@
-                        @Html.CheckBoxFor(model => model.activated.Value)
+                      @Html.CheckBoxFor(model => model.activated, htmlAttributes: new { @checked = true })
+
                         @Html.ValidationMessageFor(model => model.activated, "", new { @class = "text-danger" })
                     </div>
                 </div>

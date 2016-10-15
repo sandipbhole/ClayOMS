@@ -72,6 +72,7 @@ namespace ClayOMS.Controllers
                        faculty => new
                        {
                            facultyID = faculty.facultyID,
+                           code = faculty.code,
                            facultyName = faculty.facultyName,
                            dean = faculty.dean,
                            activated = faculty.activated,
@@ -155,7 +156,7 @@ namespace ClayOMS.Controllers
 
 
        
-        public ActionResult EditFaculty(string facultyID)
+        public ActionResult EditFaculty(long facultyID)
         {
             COM.Faculty requestSetFaculty = new COM.Faculty();
 
@@ -163,7 +164,7 @@ namespace ClayOMS.Controllers
             //    return RedirectToAction("Login", "Login");
 
             //if (string.IsNullOrEmpty(clientName))
-            if (facultyID == null)
+            if (facultyID == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

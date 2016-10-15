@@ -193,16 +193,17 @@ function LoadGrid() {
             _search: function () { return "false"; }
         },
 
-        colNames: ['Faculty Code', 'Faculty Name', 'Dean', 'Year Of Establishment','Activated','Update User','Update Date','Actions'],
+        colNames: ['Faculty ID', 'Faculty Code', 'Faculty Name', 'Dean', 'Year Of Establishment', 'Activated', 'Update User', 'Update Date', 'Actions'],
         //colNames: ['ClientId', 'ClientName', 'ContactPersonName', 'MobileNo', 'EmailId', 'IsConsignee', 'CreatedBy', 'CreatedDate', 'UpdatedBy', 'UpdatedDate', 'Actions'],
         colModel: [
-            { key: false, hidden: true, name: 'facultyID', index: 'facultyID', align: "left" },
+            { key: true, hidden: true, name: 'facultyID', index: 'facultyID', align: "left" },
+             { key: false, name: 'code', index: 'code', align: "left", resizable: false },
             { key: false, name: 'facultyName', index: 'facultyName', align: "left", resizable: false },
-            { key: true,  name: 'dean', index: 'dean', align: "left", resizable: false },
-            { key: true, name: 'yearOfEstablishment', index: 'yearOfEstablishment', align: "left", resizable: false },
-            { key: true,  name: 'activated', index: 'activated', align: "left", resizable: false },
-            { key: true, name: 'updateUser', index: 'dean', align: "left", resizable: false },
-            { key: true, hidden: false, name: 'updateDate', index: 'dean', align: "left", resizable: false },
+            { key: false, name: 'dean', index: 'dean', align: "left", resizable: false },
+            { key: false, name: 'yearOfEstablishment', index: 'yearOfEstablishment', align: "left", resizable: false },
+            { key: false, name: 'activated', index: 'activated', align: "left", resizable: false },
+            { key: false, name: 'updateUser', index: 'dean', align: "left", resizable: false },
+            { key: false, hidden: false, name: 'updateDate', index: 'dean', align: "left", resizable: false },
             
            
 

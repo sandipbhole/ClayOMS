@@ -20,48 +20,50 @@
 
                 @Html.ValidationSummary(true, "Device not saved successfully.", new { @class = "text-danger" })
                 <div class="form-group">
+                    @Html.HiddenFor(faculty => faculty.facultyID)
                     @Html.Label(" ", new { @class = "control-label col-md-2" })
                     <div class="col-md-5">
                         @Html.Label("", (string)ViewBag.message, new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
+             
+                @*<div class="form-group">
                     @Html.LabelFor(model => model.facultyID, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-5">
                         @Html.TextBoxFor(model => model.facultyID, new { @class = "form-control", @autofocus = "autofocus" })
                         @Html.ValidationMessageFor(model => model.facultyID, "", new { @class = "text-danger" })
                     </div>
-                </div>
+                </div>*@
                 <div class="form-group">
-                    @Html.LabelFor(model => model.facultyName, "Faculty", htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(faculty => faculty.code, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-5">
-                        @Html.TextBoxFor(model => model.facultyName, new { @class = "form-control", @autofocus = "autofocus" })
-                        @Html.ValidationMessageFor(model => model.facultyName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(faculty => faculty.code, new { @class = "form-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.yearOfEstablishment, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(faculty => faculty.facultyName, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-5">
                         @Html.TextBoxFor(model => model.yearOfEstablishment, new { @class = "form-control", @autofocus = "autofocus" })
                         @Html.ValidationMessageFor(model => model.yearOfEstablishment, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.dean, "Dean", htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(faculty => faculty.dean, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-5">
-                        @Html.TextBoxFor(model => model.dean, new { @class = "form-control", @autofocus = "autofocus" })
-                        @Html.ValidationMessageFor(model => model.dean, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(faculty => faculty.dean, new { @class = "form-control", @autofocus = "autofocus" })
+                        @Html.ValidationMessageFor(faculty => faculty.dean, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                @*<div class="form-group">
-                    @Html.LabelFor(model => model.activated, "IsActive", htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="form-group">
+                    @Html.LabelFor(faculty => faculty.activated, "IsActive", htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-5">
-                        @Html.CheckBoxFor(model => model.activated, new { @class = "form-control", @autofocus = "autofocus" })
-                       
-                        @Html.ValidationMessageFor(model => model.activated, "", new { @class = "text-danger" })
+                        @Html.CheckBoxFor(faculty => faculty.activated, htmlAttributes: new { @checked = true })
+
+                        @Html.ValidationMessageFor(faculty => faculty.activated, "", new { @class = "text-danger" })
                     </div>
-                </div>*@
+                </div>
                 <div class="form-group">
                     <div class="col-md-offset-1 col-md-10">
                         <input type="submit" name="command" value="Save" class="btn btn-primary" />

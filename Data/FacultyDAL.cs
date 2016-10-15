@@ -57,12 +57,21 @@ namespace Clay.OMS.Data
         {
             logger.Info("InsertFaculty");
             EntityConnection entityConnection = new EntityConnection();
-
+            string error;
             try
             {
-                var insertFaculty = from faculty in entityConnection.dbclayOMSDataContext.InsertFaculty(requestSetFaculty.facultyID,requestSetFaculty.facultyName,requestSetFaculty.yearOfEstablishment,requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.addUser)
-                                             select faculty;
+                var insertFaculty = from faculty in entityConnection.dbclayOMSDataContext.InsertFaculty(requestSetFaculty.code, requestSetFaculty.facultyName, requestSetFaculty.yearOfEstablishment, requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.addUser)
+                                    select faculty;
 
+                foreach (var response in insertFaculty)
+                {
+                    error = response.ErrorMessage;
+                    logger.Error(error);
+                    return false;
+                }
+
+                entityConnection.dbclayOMSDataContext.SubmitChanges(ConflictMode.ContinueOnConflict);
+                entityConnection.dbclayOMSDataContext.Transaction.Commit();
                 return true;
             }
             //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
@@ -94,14 +103,12 @@ namespace Clay.OMS.Data
             {
                 if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
                 {
-                    entityConnection.dbclayOMSDataContext.Transaction.Dispose();
+                    //entityConnection.dbclayOMSDataContext.Transaction.Dispose();
                     entityConnection.dbclayOMSDataContext.Connection.Dispose();
                     entityConnection.dbclayOMSDataContext.Connection.Close();
                     entityConnection.dbclayOMSDataContext.Dispose();
                 }
             }
-
-
         }
 
         public bool UpdateFaculty(COM.Faculty requestSetFaculty)
@@ -111,9 +118,15 @@ namespace Clay.OMS.Data
 
             try
             {
-                var updateFaculty = from faculty in entityConnection.dbclayOMSDataContext.UpdateFaculty(requestSetFaculty.facultyID,requestSetFaculty.code, requestSetFaculty.facultyName, requestSetFaculty.yearOfEstablishment, requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.updateUser)
-                                             select faculty;
-
+                var updateFaculty = from faculty in entityConnection.dbclayOMSDataContext.UpdateFaculty(requestSetFaculty.facultyID, requestSetFaculty.code, requestSetFaculty.facultyName, requestSetFaculty.yearOfEstablishment, requestSetFaculty.dean, requestSetFaculty.activated, requestSetFaculty.updateUser)
+                                    select faculty;
+                foreach (var response in updateFaculty)
+                {
+                    if (response.Result != 0)
+                        return false;
+                }
+                entityConnection.dbclayOMSDataContext.SubmitChanges(ConflictMode.ContinueOnConflict);
+                entityConnection.dbclayOMSDataContext.Transaction.Commit();
                 return true;
             }
             //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
@@ -162,17 +175,18 @@ namespace Clay.OMS.Data
             try
             {
                 var fetchFaculty = from faculty in entityConnection.dbclayOMSDataContext.FetchFaculty(requestSetFaculty.facultyID)
-                                            select faculty;
+                                   select faculty;
 
                 foreach (var response in fetchFaculty)
                 {
                     responseGetFaculty.facultyName = response.FacultyName;
                     responseGetFaculty.facultyID = response.FacultyID;
+                    responseGetFaculty.code = response.Code;
                     responseGetFaculty.yearOfEstablishment = response.YearOfEstablishment;
                     responseGetFaculty.dean = response.Dean;
                     responseGetFaculty.updateUser = response.UpdateUser;
-                  //  responseGetFaculty.activated = response.Activated;
-                    responseGetFaculty.updateDate = response.UpdateDate;                    
+                    responseGetFaculty.activated = response.Activated;
+                    responseGetFaculty.updateDate = response.UpdateDate;
                 }
 
                 return responseGetFaculty;
@@ -223,7 +237,7 @@ namespace Clay.OMS.Data
             try
             {
                 var getFaculty = from faculty in entityConnection.dbclayOMSDataContext.GetFaculty(requestSetFaculty.facultyName, requestSetFaculty.dean, requestSetFaculty.activated)
-                                          select faculty;
+                                 select faculty;
 
                 foreach (var response in getFaculty)
                 {
@@ -232,6 +246,7 @@ namespace Clay.OMS.Data
                         facultyName = response.FacultyName,
                         facultyID = response.FacultyID,
                         dean = response.Dean,
+                        code = response.Code,
                         yearOfEstablishment = response.YearOfEstablishment,
                         activated = response.Activated,
                         updateDate = response.UpdateDate,
@@ -270,7 +285,7 @@ namespace Clay.OMS.Data
             {
                 if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
                 {
-                    entityConnection.dbclayOMSDataContext.Transaction.Dispose();
+                   // entityConnection.dbclayOMSDataContext.Transaction.Dispose();
                     entityConnection.dbclayOMSDataContext.Connection.Dispose();
                     entityConnection.dbclayOMSDataContext.Connection.Close();
                     entityConnection.dbclayOMSDataContext.Dispose();

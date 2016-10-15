@@ -16,7 +16,7 @@ namespace ClayOMS
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "FacultyMaster", action = "FacultyMaster", id = UrlParameter.Optional }
+                defaults: new { controller = "FacultyMaster", action = "Faculty", id = UrlParameter.Optional }
             );
         }
     }

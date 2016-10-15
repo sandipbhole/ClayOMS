@@ -34,13 +34,12 @@ namespace Clay.OMS.Data
             //logger.Info("EntityConnection");
             try
             {
-                string clayOMSConnectionString = Base64Decode(System.Configuration.ConfigurationManager.ConnectionStrings["ClayOMSConnectionString"].ConnectionString);
-                //string ClayOMSConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ClayOMSConnectionString"].ConnectionString;
+                //string clayOMSConnectionString = Base64Decode(System.Configuration.ConfigurationManager.ConnectionStrings["ClayOMSConnectionString"].ConnectionString);
+                string clayOMSConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ClayOMSConnectionString"].ConnectionString;
 
                 dbclayOMSDataContext = new ClayOMSDataContext(clayOMSConnectionString);
 
-                if 
-                    (dbclayOMSDataContext.Connection.State == ConnectionState.Open)
+                if (dbclayOMSDataContext.Connection.State == ConnectionState.Open)
                     dbclayOMSDataContext.Connection.Close();
 
                 dbclayOMSDataContext.Connection.Open();

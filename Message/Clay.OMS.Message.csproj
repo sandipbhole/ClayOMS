@@ -44,6 +44,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="Degree.cs" />
     <Compile Include="Department.cs" />
+    <Compile Include="Designation.cs" />
     <Compile Include="District.cs" />
     <Compile Include="ExaminationGrade.cs" />
     <Compile Include="Faculty.cs" />

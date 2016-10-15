@@ -12,6 +12,7 @@ namespace Clay.OMS.Message
         public long facultyID {get; set; }
 
         [Display(Name = "Faculty Code")]
+        [Required(ErrorMessage = "Please provide code.", AllowEmptyStrings = false)]
         [StringLength(20)]
         public string code { get; set; }
 
@@ -20,6 +21,7 @@ namespace Clay.OMS.Message
         [Required(ErrorMessage = "Please provide faculty name.", AllowEmptyStrings = false)]
         public string facultyName { get; set; }
 
+        [Display(Name = "Year Of Establishment")]
         public System.Nullable<int> yearOfEstablishment { get; set; }
 
         [Display(Name = "Dean")]
@@ -32,6 +34,6 @@ namespace Clay.OMS.Message
 
         public System.Nullable<DateTime> updateDate { get; set; }
 
-        public System.Nullable<bool> activated { get; set; }
+        public bool activated { get; set; }
     }
 }
