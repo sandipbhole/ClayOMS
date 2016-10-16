@@ -1,318 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ClayOMS" Class="ClayOMSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=ARCHIT\SQLSERVER2014;Initial Catalog=ClayOMS;Persist Security Info=True;User ID=sa" SettingsObjectName="Clay.OMS.Data.Properties.Settings" SettingsPropertyName="ClayOMSConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.BloodGroup" Member="BloodGroups">
-    <Type Name="BloodGroup">
-      <Column Name="bloodgroupid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="bloodgroup" Member="bloodgroup1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Batch" Member="Batches">
-    <Type Name="Batch">
-      <Column Name="BatchID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Batch" Member="Batch1" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Caste" Member="Castes">
-    <Type Name="Caste">
-      <Column Name="casteid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="caste" Member="caste1" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="communityid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Category" Member="Categories">
-    <Type Name="Category">
-      <Column Name="categoryid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="category" Member="category1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ClassBatch" Member="ClassBatches">
-    <Type Name="ClassBatch">
-      <Column Name="ClassBatchID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Class" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Batch" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AcademicYearID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.ConcessionType" Member="ConcessionTypes">
-    <Type Name="ConcessionType">
-      <Column Name="ConcessionTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ConcessionType" Member="ConcessionType1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Congregation" Member="Congregations">
-    <Type Name="Congregation">
-      <Column Name="CongregationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CongregationCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Congregation" Member="Congregation1" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Country" Member="Countries">
-    <Type Name="Country">
+  <Function Name="dbo.DeleteDegree" Method="DeleteDegree">
+    <Parameter Name="degreeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="degree" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="programmeTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.FetchClass" Method="FetchClass">
+    <Parameter Name="classID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="FetchClassResult">
+      <Column Name="ClassID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClassCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Class" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Programme" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="YearPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Section" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FetchCountry" Method="FetchCountry">
+    <Parameter Name="countryName" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="FetchCountryResult">
       <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Country" Member="Country1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Degree" Member="Degrees">
-    <Type Name="Degree">
-      <Column Name="DegreeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Degree" Member="Degree1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Department" Member="Departments">
-    <Type Name="Department">
-      <Column Name="departmentid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="code" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="department" Member="department1" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="departmentorder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="departmenttype" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="yearofestablishment" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
-      <Column Name="facultyid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Designation" Member="Designations">
-    <Type Name="Designation">
-      <Column Name="DesignationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Designation" Member="Designation1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Diocese" Member="Dioceses">
-    <Type Name="Diocese">
-      <Column Name="DioceseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Diocese" Member="Diocese1" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
-      <Column Name="Address1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Address2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Address3" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="DistrictID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PinCode" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.District" Member="Districts">
-    <Type Name="District">
-      <Column Name="DistrictID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="District" Member="District1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="StateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Email" Member="Emails">
-    <Type Name="Email">
-      <Column Name="EmID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="EmailID" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Port" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Column Name="Server" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CareerCourse" Member="CareerCourses">
-    <Type Name="CareerCourse">
-      <Column Name="CareerCourseid" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CareerCourse" Member="CareerCourse1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CalendarType" Member="CalendarTypes">
-    <Type Name="CalendarType">
-      <Column Name="CalendarTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CalendarType" Member="CalendarType1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AbstractDueDetails" Member="AbstractDueDetails">
-    <Type Name="AbstractDueDetail">
-      <Column Name="TermID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StudentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ClassID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StrAmount" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
-      <Column Name="ConAmount" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
-      <Column Name="PaidAmount" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
-      <Column Name="BalAmount" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AddNode" Member="AddNodes">
-    <Type Name="AddNode">
-      <Column Name="AddNodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddNode" Member="AddNode1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="AddFolderID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AddFolder" Member="AddFolders">
-    <Type Name="AddFolder">
-      <Column Name="AddFolderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddFolder" Member="AddFolder1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.AddressType" Member="AddressTypes">
-    <Type Name="AddressType">
-      <Column Name="AddressTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddressType" Member="AddressType1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Faculty" Member="Faculty1s">
-    <Type Name="Faculty1">
-      <Column Name="FacultyCode" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Faculty" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="YearOfEstablishment" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Dean" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Faculty" Member="Faculties">
-    <Type Name="Faculty">
-      <Column Name="FacultyID" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="FacultyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="YearOfEstablishment" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Dean" Type="System.String" DbType="NVarChar(80)" CanBeNull="true" />
-      <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.StaffCategory" Member="StaffCategories">
-    <Type Name="StaffCategory">
-      <Column Name="StaffCategoryID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="StaffCategory" Member="StaffCategory1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="StaffTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.StaffPersonalInformation" Member="StaffPersonalInformations">
-    <Type Name="StaffPersonalInformation">
-      <Column Name="StaffID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Prefix" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DateOfBirth" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="KnownAs" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Gender" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="DateOfJoin" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="StaffType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StaffCategory" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UserRigths" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Remark" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Department" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Faculty" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Designation" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StaffMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="BloodGroup" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="MaritalStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SpecialArea" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="FatherName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Expereince" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Community" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Nationality" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Religion" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Caste" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IDMark1" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="IDMark2" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="LeavingDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="LeavingReason" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
-      <Column Name="Password" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="PhotoPath" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AttendanceOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="PhotoName" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Session" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Parish" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Congregation" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Province" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AttNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="UserName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Validity" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.StaffPhoto" Member="StaffPhotos">
-    <Type Name="StaffPhoto">
-      <Column Name="StfPhotoID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StaffID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="Signature" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-    </Type>
-  </Table>
-  <Table Name="dbo.StaffType" Member="StaffTypes">
-    <Type Name="StaffType">
-      <Column Name="StaffTypeID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="StaffType" Member="StaffType1" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.StaffSubject" Member="StaffSubjects">
-    <Type Name="StaffSubject">
-      <Column Name="StaffSubjectID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Staff" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SubjectID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ClassID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Batch" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Function Name="dbo.InsertDepartment" Method="InsertDepartment">
-    <Parameter Name="code" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="department" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="departmentType" Type="System.Int32" DbType="Int" />
-    <Parameter Name="departmentOrder" Type="System.Int32" DbType="Int" />
-    <Parameter Name="yearOfEstalishment" Type="System.Int32" DbType="Int" />
-    <Parameter Name="facultyID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="InsertDepartmentResult">
-      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.InsertFaculty" Method="InsertFaculty">
-    <Parameter Name="code" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="facultyName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="yearOfEstablishment" Type="System.Int32" DbType="Int" />
-    <Parameter Name="dean" Type="System.String" DbType="NVarChar(80)" />
-    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="InsertFacultyResult">
-      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.UpdateDepartment" Method="UpdateDepartment">
+  <Function Name="dbo.FetchDepartment" Method="FetchDepartment">
     <Parameter Name="departmentID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="code" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="department" Type="System.String" DbType="NVarChar(100)" />
-    <Parameter Name="departmentType" Type="System.Int32" DbType="Int" />
-    <Parameter Name="departmentOrder" Type="System.Int32" DbType="Int" />
-    <Parameter Name="yearOfEstalishment" Type="System.Int32" DbType="Int" />
-    <Parameter Name="facultyID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="UpdateDepartmentResult">
-      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    <ElementType Name="FetchDepartmentResult">
+      <Column Name="DepartmentID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DepartmentType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YearOfEstablishment" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacultyID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="FacultyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.UpdateFaculty" Method="UpdateFaculty">
-    <Parameter Name="facultyID" Type="System.Int64" DbType="BigInt" />
-    <Parameter Name="code" Type="System.String" DbType="NVarChar(20)" />
-    <Parameter Name="facultyName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="yearOfEstablishment" Type="System.Int32" DbType="Int" />
-    <Parameter Name="dean" Type="System.String" DbType="NVarChar(80)" />
-    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="UpdateFacultyResult">
-      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+  <Function Name="dbo.FetchDesignation" Method="FetchDesignation">
+    <Parameter Name="designationID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="FetchDesignationResult">
+      <Column Name="DesignationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Designation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FetchExaminationGrade" Method="FetchExaminationGrade">
+    <Parameter Name="gradeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="FetchExaminationGradeResult">
+      <Column Name="GradeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Grade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AcademicYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PercentageFrom" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="PercentageTo" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.FetchFaculty" Method="FetchFaculty">
@@ -328,16 +87,95 @@
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GetFaculty" Method="GetFaculty">
-    <Parameter Name="facultyName" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="dean" Type="System.String" DbType="NVarChar(80)" />
-    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="GetFacultyResult">
-      <Column Name="FacultyID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+  <Function Name="dbo.FetchProgramme" Method="FetchProgramme">
+    <Parameter Name="programmeID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="FetchProgrammeResult">
+      <Column Name="DegreeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Degree" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Programme" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="FacultyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FacultyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="YearOfEstablishment" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Dean" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgrammeDuration" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Coordinator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StipulatedPeriod" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgrammeDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProgrammeOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FetchProgrammeType" Method="FetchProgrammeType">
+    <Parameter Name="degreeID" Type="System.Int32" DbType="Int" />
+    <ElementType Name="FetchProgrammeTypeResult">
+      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FetchSubject" Method="FetchSubject">
+    <Parameter Name="subjectID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="FetchSubjectResult">
+      <Column Name="SubjectID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubjectCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeTypeID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubjectTypeID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubjectType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalMark" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BatchFrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BatchNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubjectMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubjectDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetClass" Method="GetClass">
+    <Parameter Name="class" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="GetClassResult">
+      <Column Name="ClassID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClassCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Class" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Programme" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="YearPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Section" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCountry" Method="GetCountry">
+    <Parameter Name="country" Type="System.String" DbType="NVarChar(100)" />
+    <ElementType Name="GetCountryResult">
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetDegree" Method="GetDegree">
+    <Parameter Name="degree" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="programmeType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="GetDegreeResult">
+      <Column Name="DegreeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Degree" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeTypeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
@@ -361,42 +199,15 @@
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.FetchDepartment" Method="FetchDepartment">
-    <Parameter Name="departmentID" Type="System.Int64" DbType="BigInt" />
-    <ElementType Name="FetchDepartmentResult">
-      <Column Name="DepartmentID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Department" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DepartmentOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DepartmentType" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="YearOfEstablishment" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FacultyID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="FacultyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.FetchDegree" Method="FetchDegree">
-    <Parameter Name="degreeID" Type="System.Int32" DbType="Int" />
-    <ElementType Name="FetchDegreeResult">
-      <Column Name="DegreeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Degree" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+  <Function Name="dbo.GetDesignation" Method="GetDesignation">
+    <Parameter Name="designation" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="GetDesignationResult">
+      <Column Name="DesignationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Designation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.FetchDesignation" Method="FetchDesignation">
-    <Parameter Name="designationID" Type="System.Int32" DbType="Int" />
-    <ElementType Name="FetchDesignationResult">
-      <Column Name="DesignationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Designation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.GetDistrict" Method="GetDistrict">
@@ -412,63 +223,41 @@
       <Column Name="District" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.InsertDegree" Method="InsertDegree">
-    <Parameter Name="degree" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="programmeTypeID" Type="System.Int32" DbType="Int" />
+  <Function Name="dbo.GetFaculty" Method="GetFaculty">
+    <Parameter Name="facultyName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="dean" Type="System.String" DbType="NVarChar(80)" />
     <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="InsertDegreeResult">
-      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.UpdateDegree" Method="UpdateDegree">
-    <Parameter Name="degreeID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="degree" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="programmeTypeID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="UpdateDegreeResult">
-      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.GetState" Method="GetState">
-    <Parameter Name="state" Type="System.String" DbType="NVarChar(150)" />
-    <Parameter Name="country" Type="System.String" DbType="NVarChar(50)" />
-    <ElementType Name="GetStateResult">
-      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="State" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.GetCountry" Method="GetCountry">
-    <Parameter Name="country" Type="System.String" DbType="NVarChar(100)" />
-    <ElementType Name="GetCountryResult">
-      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.GetDesignation" Method="GetDesignation">
-    <Parameter Name="designation" Type="System.String" DbType="NVarChar(50)" />
-    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="GetDesignationResult">
-      <Column Name="DesignationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Designation" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    <ElementType Name="GetFacultyResult">
+      <Column Name="FacultyID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FacultyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="YearOfEstablishment" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Dean" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
       <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GetDegree" Method="GetDegree">
+  <Function Name="dbo.GetProgramme" Method="GetProgramme">
+    <Parameter Name="programme" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="degree" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="programmeType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="faculty" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="GetDegreeResult">
-      <Column Name="DegreeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    <ElementType Name="GetProgrammeResult">
+      <Column Name="DegreeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Degree" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Programme" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="FacultyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FacultyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgrammeDuration" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Coordinator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="StipulatedPeriod" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ProgrammeDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ProgrammeOrder" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
@@ -484,6 +273,355 @@
       <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="UpdateUser1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="UpdateDate1" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetProjectInvestigator" Method="GetProjectInvestigator">
+    <Parameter Name="projectInvestigator" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetProjectInvestigatorResult">
+      <Column Name="ProjectInvestigatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectInvestigator" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetProjectStatus" Method="GetProjectStatus">
+    <Parameter Name="projectStatus" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetProjectStatusResult">
+      <Column Name="ProjectStatusID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetProjectType" Method="GetProjectType">
+    <Parameter Name="projectType" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetProjectTypeResult">
+      <Column Name="ProjectTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetProvince" Method="GetProvince">
+    <Parameter Name="province" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetProvinceResult">
+      <Column Name="ProvinceID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CongregationID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Congregation" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address1" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Address3" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DistrictID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StateID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PinCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetRector" Method="GetRector">
+    <Parameter Name="rector" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetRectorResult">
+      <Column Name="RectorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Rector" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="MailID" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetState" Method="GetState">
+    <Parameter Name="state" Type="System.String" DbType="NVarChar(150)" />
+    <Parameter Name="country" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetStateResult">
+      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="State" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="CountryID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertClass" Method="InsertClass">
+    <Parameter Name="classCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Class" Parameter="class" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="programmeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="yearPosition" Type="System.Int32" DbType="Int" />
+    <Parameter Name="section" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertClassResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertDegree" Method="InsertDegree">
+    <Parameter Name="degree" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="programmeTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertDegreeResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertDepartment" Method="InsertDepartment">
+    <Parameter Name="code" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="department" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="departmentType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="departmentOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="yearOfEstalishment" Type="System.Int32" DbType="Int" />
+    <Parameter Name="facultyID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertDepartmentResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertExaminationGrade" Method="InsertExaminationGrade">
+    <Parameter Name="grade" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="percentageFrom" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="percentageTo" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="description" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="academicYear" Type="System.Int32" DbType="Int" />
+    <Parameter Name="programmeTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertExaminationGradeResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertFaculty" Method="InsertFaculty">
+    <Parameter Name="code" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="facultyName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="yearOfEstablishment" Type="System.Int32" DbType="Int" />
+    <Parameter Name="dean" Type="System.String" DbType="NVarChar(80)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertFacultyResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertProgramme" Method="InsertProgramme">
+    <Parameter Name="degreeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="programme" Type="System.String" DbType="NVarChar(75)" />
+    <Parameter Name="facultyID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="programmeTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="programmeDuration" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="coordinator" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="stipulatedPeriod" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="programmeDescription" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="programmeOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertProgrammeResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertProgrammeType" Method="InsertProgrammeType">
+    <Parameter Name="programmeType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertProgrammeTypeResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertSubject" Method="InsertSubject">
+    <Parameter Name="subjectCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="subject" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="departmentID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="programmeTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="subjectTypeID" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="totalMark" Type="System.Int32" DbType="Int" />
+    <Parameter Name="batchFrom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="batchNo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="subjectMode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subjectDescription" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertSubjectResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateClass" Method="UpdateClass">
+    <Parameter Name="classID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="classCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Class" Parameter="class" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="programmeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="yearPosition" Type="System.Int32" DbType="Int" />
+    <Parameter Name="section" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateClassResult">
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateDepartment" Method="UpdateDepartment">
+    <Parameter Name="departmentID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="code" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="department" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="departmentType" Type="System.Int32" DbType="Int" />
+    <Parameter Name="departmentOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="yearOfEstalishment" Type="System.Int32" DbType="Int" />
+    <Parameter Name="facultyID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateDepartmentResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateExaminationGrade" Method="UpdateExaminationGrade">
+    <Parameter Name="gradeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="grade" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="percentageFrom" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="percentageTo" Type="System.Decimal" DbType="Decimal(12,2)" />
+    <Parameter Name="description" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="academicYear" Type="System.Int32" DbType="Int" />
+    <Parameter Name="programmeTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateExaminationGradeResult">
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateFaculty" Method="UpdateFaculty">
+    <Parameter Name="facultyID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="code" Type="System.String" DbType="NVarChar(20)" />
+    <Parameter Name="facultyName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="yearOfEstablishment" Type="System.Int32" DbType="Int" />
+    <Parameter Name="dean" Type="System.String" DbType="NVarChar(80)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateFacultyResult">
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateProgramme" Method="UpdateProgramme">
+    <Parameter Name="programmeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="degreeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="programme" Type="System.String" DbType="NVarChar(75)" />
+    <Parameter Name="facultyID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="programmeTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="programmeDuration" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="coordinator" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="stipulatedPeriod" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="programmeDescription" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="programmeOrder" Type="System.Int32" DbType="Int" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateProgrammeResult">
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateProgrammeType" Method="UpdateProgrammeType">
+    <Parameter Name="ProgrammeTypeID" Parameter="programmeTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ProgrammeType" Parameter="programmeType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateProgrammeTypeResult">
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateSubject" Method="UpdateSubject">
+    <Parameter Name="subjectID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="subjectCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="subject" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="departmentID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="programmeTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="subjectTypeID" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="totalMark" Type="System.Int32" DbType="Int" />
+    <Parameter Name="batchFrom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="batchNo" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="subjectMode" Type="System.Int32" DbType="Int" />
+    <Parameter Name="subjectDescription" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateSubjectResult">
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetExaminationGrade" Method="GetExaminationGrade">
+    <Parameter Name="grade" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="programmeType" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="academicYear" Type="System.Int32" DbType="Int" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="GetExaminationGradeResult">
+      <Column Name="GradeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Grade" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="AcademicYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PercentageFrom" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="PercentageTo" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="ProgrammeTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateDegree" Method="UpdateDegree">
+    <Parameter Name="degreeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="degree" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="programmeTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="updateUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateDegreeResult">
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FetchDegree" Method="FetchDegree">
+    <Parameter Name="degreeID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="FetchDegreeResult">
+      <Column Name="DegreeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Degree" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeTypeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetSubject" Method="GetSubject">
+    <Parameter Name="subject" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="department" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="programmeType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="subjectType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="GetSubjectResult">
+      <Column Name="SubjectID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="SubjectCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DepartmentID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Department" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeTypeID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="ProgrammeType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubjectTypeID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubjectType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TotalMark" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BatchFrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BatchNo" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SubjectMode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SubjectDescription" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

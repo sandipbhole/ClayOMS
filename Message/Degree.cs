@@ -10,14 +10,14 @@ namespace Clay.OMS.Message
     public class Degree
     {
 
-        public int degreeID { get; set; }
+        public long degreeID { get; set; }
 
         [Display(Name = "Degree")]
         [StringLength(100)]
         [Required(ErrorMessage = "Please provide degree.", AllowEmptyStrings = false)]
         public string degree { get; set; }
 
-        public int programmeTypeID { get; set; }
+        public long programmeTypeID { get; set; }
 
         [Display(Name = "Programme Type")]
         [Required(ErrorMessage = "Please provide programme type.", AllowEmptyStrings = false)]
