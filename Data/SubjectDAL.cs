@@ -17,11 +17,11 @@ using COM = Clay.OMS.Message;
 
 namespace Clay.OMS.Data
 {
-    public class ProgrammeDAL
+    public class SubjectDAL
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ProgrammeDAL));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(SubjectDAL));
 
-        public ProgrammeDAL()
+        public SubjectDAL()
         {
             InitializeLog4Net();
         }
@@ -53,17 +53,17 @@ namespace Clay.OMS.Data
             //logger.Info("Log4NET initialized successfully.");
         }
 
-        public bool InsertProgramme(COM.Programme requestSetProgramme)
+        public bool InsertSubject(COM.Subject requestSetSubject)
         {
-            logger.Info("InsertProgramme");
+            logger.Info("InsertSubject");
             EntityConnection entityConnection = new EntityConnection();
             string error;
             try
             {
-                var insertProgramme = from programme in entityConnection.dbclayOMSDataContext.InsertProgramme(requestSetProgramme.degreeID, requestSetProgramme.programmeName, requestSetProgramme.facultyID, requestSetProgramme.programmeTypeID, requestSetProgramme.programmeDuration, requestSetProgramme.coordinator, requestSetProgramme.stipulatedPeriod, requestSetProgramme.programmeDescription, requestSetProgramme.programmeOrder, requestSetProgramme.activated, requestSetProgramme.addUser)
-                                    select programme;
+                var insertSubject = from academicSubject in entityConnection.dbclayOMSDataContext.InsertSubject(requestSetSubject.subjectCode, requestSetSubject.subject, requestSetSubject.departmentID, requestSetSubject.programmeTypeID, requestSetSubject.subjectTypeID, requestSetSubject.totalMark, requestSetSubject.batchFrom, requestSetSubject.batchNo, requestSetSubject.subjectMode, requestSetSubject.subjectDescription, requestSetSubject.activated, requestSetSubject.addUser)
+                                          select academicSubject;
 
-                foreach (var response in insertProgramme)
+                foreach (var response in insertSubject)
                 {
                     error = response.ErrorMessage;
                     logger.Error(error);
@@ -111,17 +111,17 @@ namespace Clay.OMS.Data
             }
         }
 
-        public bool UpdateProgramme(COM.Programme requestSetProgramme)
+        public bool UpdateSubject(COM.Subject requestSetSubject)
         {
-            logger.Info("UpdateProgramme");
+            logger.Info("UpdateSubject");
             EntityConnection entityConnection = new EntityConnection();
 
             try
             {
-                var updateProgramme = from programme in entityConnection.dbclayOMSDataContext.UpdateProgramme(requestSetProgramme.programmeID,requestSetProgramme.degreeID, requestSetProgramme.programmeName, requestSetProgramme.facultyID, requestSetProgramme.programmeTypeID, requestSetProgramme.programmeDuration, requestSetProgramme.coordinator, requestSetProgramme.stipulatedPeriod, requestSetProgramme.programmeDescription, requestSetProgramme.programmeOrder, requestSetProgramme.activated, requestSetProgramme.updateUser)
-                                    select programme;
+                var updateSubject = from subject in entityConnection.dbclayOMSDataContext.UpdateSubject(requestSetSubject.subjectID,requestSetSubject.subjectCode, requestSetSubject.subject, requestSetSubject.departmentID, requestSetSubject.programmeTypeID, requestSetSubject.subjectTypeID, requestSetSubject.totalMark, requestSetSubject.batchFrom, requestSetSubject.batchNo, requestSetSubject.subjectMode, requestSetSubject.subjectDescription, requestSetSubject.activated, requestSetSubject.updateUser)
+                                          select subject;
 
-                foreach (var response in updateProgramme)
+                foreach (var response in updateSubject)
                 {
                     if (response.Result != 0)
                         return false;
@@ -167,33 +167,37 @@ namespace Clay.OMS.Data
             }
         }
 
-        public COM.Programme FetchProgramme(COM.Programme requestSetProgramme)
+        public COM.Subject FetchSubject(COM.Subject requestSetSubject)
         {
-            logger.Info("FetchProgramme");
+            logger.Info("FetchSubject");
             EntityConnection entityConnection = new EntityConnection();
-            COM.Programme responseGetProgramme = new COM.Programme();
+            COM.Subject responseGetSubject = new COM.Subject();
 
             try
             {
-                var fetchProgramme = from programme in entityConnection.dbclayOMSDataContext.FetchProgramme(requestSetProgramme.programmeID)
-                                   select programme;
+                var fetchSubject = from academicSubject in entityConnection.dbclayOMSDataContext.FetchSubject(requestSetSubject.subjectID)
+                                         select academicSubject;
 
-                foreach (var response in fetchProgramme)
+                foreach (var response in fetchSubject)
                 {
-                    responseGetProgramme.programmeName = response.Programme;
-                    responseGetProgramme.programmeID = response.ProgrammeID;
-                    responseGetProgramme.programmeTypeID = response.ProgrammeTypeID;
-                    responseGetProgramme.programmeType = response.ProgrammeType;
-                    responseGetProgramme.programmeDescription = response.ProgrammeDescription;
-                    responseGetProgramme.programmeDuration = response.ProgrammeDuration;
-                    responseGetProgramme.programmeOrder = response.ProgrammeOrder;
-                    responseGetProgramme.stipulatedPeriod = response.StipulatedPeriod;                  
-                    responseGetProgramme.updateUser = response.UpdateUser;
-                    responseGetProgramme.activated = response.Activated;
-                    responseGetProgramme.updateDate = response.UpdateDate;
+                    responseGetSubject.subject = response.Subject;
+                    responseGetSubject.subjectCode = response.SubjectCode;
+                    responseGetSubject.subjectDescription = response.SubjectCode;
+                    responseGetSubject.subjectID = response.SubjectID;
+                    responseGetSubject.subjectMode = response.SubjectMode;
+                    responseGetSubject.subjectType = response.SubjectType;
+                    responseGetSubject.subjectTypeID = response.SubjectTypeID;
+                    responseGetSubject.totalMark = response.TotalMark;
+                    responseGetSubject.batchFrom = response.BatchFrom;
+                    responseGetSubject.batchNo = response.BatchNo;
+                    responseGetSubject.department = response.Department;
+                    responseGetSubject.departmentID = response.DepartmentID;
+                    responseGetSubject.updateUser = response.UpdateUser;
+                    responseGetSubject.activated = response.Activated;
+                    responseGetSubject.updateDate = response.UpdateDate;
                 }
 
-                return responseGetProgramme;
+                return responseGetSubject;
             }
             //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
             catch (ChangeConflictException ex)
@@ -209,7 +213,7 @@ namespace Clay.OMS.Data
                     }
                     entityConnection.dbclayOMSDataContext.Transaction.Rollback();
                 }
-                return responseGetProgramme;
+                return responseGetSubject;
             }
             catch (Exception ex)
             {
@@ -218,7 +222,7 @@ namespace Clay.OMS.Data
                 {
                     entityConnection.dbclayOMSDataContext.Transaction.Rollback();
                 }
-                return responseGetProgramme;
+                return responseGetSubject;
             }
             finally
             {
@@ -232,37 +236,39 @@ namespace Clay.OMS.Data
             }
         }
 
-        public List<COM.Programme> GetProgramme(COM.Programme requestSetProgramme)
+        public List<COM.Subject> GetSubject(COM.Subject requestSetSubject)
         {
-            logger.Info("GetProgramme");
+            logger.Info("GetSubject");
             EntityConnection entityConnection = new EntityConnection();
-            List<COM.Programme> responseGetProgramme = new List<COM.Programme>();
+            List<COM.Subject> responseGetSubject = new List<COM.Subject>();
 
             try
             {
-                var getProgramme = from programme in entityConnection.dbclayOMSDataContext.GetProgramme(requestSetProgramme.programmeName, requestSetProgramme.degree, requestSetProgramme.programmeType, requestSetProgramme.faculty, requestSetProgramme.activated)
-                                 select programme;
+                var getSubject = from subject in entityConnection.dbclayOMSDataContext.GetSubject(requestSetSubject.subject, requestSetSubject.department, requestSetSubject.programmeType, requestSetSubject.subjectType, requestSetSubject.activated)
+                                 select subject;
 
-                foreach (var response in getProgramme)
+                foreach (var response in getSubject)
                 {
-                    responseGetProgramme.Add(new COM.Programme
+                    responseGetSubject.Add(new COM.Subject
                     {
-                        programmeName = response.Programme,
-                        programmeID = response.ProgrammeID,
-                        degree = response.Degree ,
-                        degreeID = response.DegreeID ,
-                        programmeType = response.ProgrammeType ,
-                        programmeTypeID = response.ProgrammeTypeID ,
-                        programmeDescription = response.ProgrammeDescription ,
-                        programmeDuration = response.ProgrammeDuration ,
-                        programmeOrder = response.ProgrammeOrder ,
+                        subject = response.Subject,
+                        subjectCode = response.SubjectCode,
+                        subjectDescription = response.SubjectDescription,
+                        subjectID = response.SubjectID,
+                        subjectTypeID = response.SubjectTypeID,
+                        subjectType = response.SubjectType,
+                        subjectMode = response.SubjectMode,
+                        programmeType = response.ProgrammeType,
+                        programmeTypeID = response.ProgrammeTypeID,
+                        department = response.Department,
+                        departmentID = response.DepartmentID,
                         activated = response.Activated,
                         updateDate = response.UpdateDate,
                         updateUser = response.UpdateUser
                     });
                 }
 
-                return responseGetProgramme;
+                return responseGetSubject;
             }
             //Resolve Concurrency Conflicts by Retaining Database Values (LINQ to SQL)
             catch (ChangeConflictException ex)
@@ -278,7 +284,7 @@ namespace Clay.OMS.Data
                     }
                     entityConnection.dbclayOMSDataContext.Transaction.Rollback();
                 }
-                return responseGetProgramme;
+                return responseGetSubject;
             }
             catch (Exception ex)
             {
@@ -287,13 +293,13 @@ namespace Clay.OMS.Data
                 {
                     entityConnection.dbclayOMSDataContext.Transaction.Rollback();
                 }
-                return responseGetProgramme;
+                return responseGetSubject;
             }
             finally
             {
                 if (entityConnection.dbclayOMSDataContext.Connection.State == ConnectionState.Open)
                 {
-                    // entityConnection.dbclayOMSDataContext.Transaction.Dispose();
+                    entityConnection.dbclayOMSDataContext.Transaction.Dispose();
                     entityConnection.dbclayOMSDataContext.Connection.Dispose();
                     entityConnection.dbclayOMSDataContext.Connection.Close();
                     entityConnection.dbclayOMSDataContext.Dispose();

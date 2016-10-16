@@ -22,7 +22,10 @@ namespace Clay.OMS.Message
 
         public long facultyID { get; set; }
 
-        public long faculty { get; set; }
+        [Display(Name = "Faculty")]
+        [StringLength(50)]
+            [Required(ErrorMessage = "Please provide faculty.", AllowEmptyStrings = false)]
+        public string faculty { get; set; }
 
         public System.Nullable<long> programmeTypeID { get; set; }
 

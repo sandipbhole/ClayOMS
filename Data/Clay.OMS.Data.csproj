@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcademicClassDAL.cs" />
-    <Compile Include="ClayOMSData1.designer.cs">
+    <Compile Include="ClayOMSData.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClayOMSData.dbml</DependentUpon>
@@ -69,13 +69,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="SubjectDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="ClayOMSData.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>ClayOMSData1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>ClayOMSData.designer.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
