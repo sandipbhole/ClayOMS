@@ -467,6 +467,34 @@ namespace Clay.OMS.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), degree, programmeTypeID, activated, addUser);
 			return ((ISingleResult<InsertDegreeResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertClass")]
+		public ISingleResult<InsertClassResult> InsertClass([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string classCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Class", DbType="NVarChar(100)")] string @class, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> programmeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> yearPosition, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string section, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), classCode, @class, programmeID, yearPosition, section, activated, addUser);
+			return ((ISingleResult<InsertClassResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateClass")]
+		public ISingleResult<UpdateClassResult> UpdateClass([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> classID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string classCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Class", DbType="NVarChar(100)")] string @class, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> programmeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> yearPosition, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string section, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), classID, classCode, @class, programmeID, yearPosition, section, activated, addUser);
+			return ((ISingleResult<UpdateClassResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FetchClass")]
+		public ISingleResult<FetchClassResult> FetchClass([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> classID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), classID);
+			return ((ISingleResult<FetchClassResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetClass")]
+		public ISingleResult<GetClassResult> GetClass([global::System.Data.Linq.Mapping.ParameterAttribute(Name="class", DbType="NVarChar(50)")] string @class, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), @class, activated);
+			return ((ISingleResult<GetClassResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.BloodGroup")]
@@ -6446,6 +6474,524 @@ namespace Clay.OMS.Data
 				if ((this._ErrorMessage != value))
 				{
 					this._ErrorMessage = value;
+				}
+			}
+		}
+	}
+	
+	public partial class InsertClassResult
+	{
+		
+		private System.Nullable<int> _ErrorNumber;
+		
+		private string _ErrorMessage;
+		
+		public InsertClassResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
+		public System.Nullable<int> ErrorNumber
+		{
+			get
+			{
+				return this._ErrorNumber;
+			}
+			set
+			{
+				if ((this._ErrorNumber != value))
+				{
+					this._ErrorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
+		public string ErrorMessage
+		{
+			get
+			{
+				return this._ErrorMessage;
+			}
+			set
+			{
+				if ((this._ErrorMessage != value))
+				{
+					this._ErrorMessage = value;
+				}
+			}
+		}
+	}
+	
+	public partial class UpdateClassResult
+	{
+		
+		private int _Result;
+		
+		public UpdateClassResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="Int NOT NULL")]
+		public int Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this._Result = value;
+				}
+			}
+		}
+	}
+	
+	public partial class FetchClassResult
+	{
+		
+		private long _ClassID;
+		
+		private string _ClassCode;
+		
+		private string _Class;
+		
+		private long _ProgrammeID;
+		
+		private string _Programme;
+		
+		private int _YearPosition;
+		
+		private string _Section;
+		
+		private bool _Activated;
+		
+		private System.DateTime _AddDate;
+		
+		private string _AddUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		private string _UpdateUser;
+		
+		public FetchClassResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassID", DbType="BigInt NOT NULL")]
+		public long ClassID
+		{
+			get
+			{
+				return this._ClassID;
+			}
+			set
+			{
+				if ((this._ClassID != value))
+				{
+					this._ClassID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ClassCode
+		{
+			get
+			{
+				return this._ClassCode;
+			}
+			set
+			{
+				if ((this._ClassCode != value))
+				{
+					this._ClassCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Class", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Class
+		{
+			get
+			{
+				return this._Class;
+			}
+			set
+			{
+				if ((this._Class != value))
+				{
+					this._Class = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeID", DbType="BigInt NOT NULL")]
+		public long ProgrammeID
+		{
+			get
+			{
+				return this._ProgrammeID;
+			}
+			set
+			{
+				if ((this._ProgrammeID != value))
+				{
+					this._ProgrammeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Programme", DbType="NVarChar(75) NOT NULL", CanBeNull=false)]
+		public string Programme
+		{
+			get
+			{
+				return this._Programme;
+			}
+			set
+			{
+				if ((this._Programme != value))
+				{
+					this._Programme = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YearPosition", DbType="Int NOT NULL")]
+		public int YearPosition
+		{
+			get
+			{
+				return this._YearPosition;
+			}
+			set
+			{
+				if ((this._YearPosition != value))
+				{
+					this._YearPosition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Section", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Section
+		{
+			get
+			{
+				return this._Section;
+			}
+			set
+			{
+				if ((this._Section != value))
+				{
+					this._Section = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddDate", DbType="DateTime NOT NULL")]
+		public System.DateTime AddDate
+		{
+			get
+			{
+				return this._AddDate;
+			}
+			set
+			{
+				if ((this._AddDate != value))
+				{
+					this._AddDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string AddUser
+		{
+			get
+			{
+				return this._AddUser;
+			}
+			set
+			{
+				if ((this._AddUser != value))
+				{
+					this._AddUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetClassResult
+	{
+		
+		private long _ClassID;
+		
+		private string _ClassCode;
+		
+		private string _Class;
+		
+		private long _ProgrammeID;
+		
+		private string _Programme;
+		
+		private int _YearPosition;
+		
+		private string _Section;
+		
+		private bool _Activated;
+		
+		private System.DateTime _AddDate;
+		
+		private string _AddUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		private string _UpdateUser;
+		
+		public GetClassResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassID", DbType="BigInt NOT NULL")]
+		public long ClassID
+		{
+			get
+			{
+				return this._ClassID;
+			}
+			set
+			{
+				if ((this._ClassID != value))
+				{
+					this._ClassID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ClassCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ClassCode
+		{
+			get
+			{
+				return this._ClassCode;
+			}
+			set
+			{
+				if ((this._ClassCode != value))
+				{
+					this._ClassCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Class", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Class
+		{
+			get
+			{
+				return this._Class;
+			}
+			set
+			{
+				if ((this._Class != value))
+				{
+					this._Class = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgrammeID", DbType="BigInt NOT NULL")]
+		public long ProgrammeID
+		{
+			get
+			{
+				return this._ProgrammeID;
+			}
+			set
+			{
+				if ((this._ProgrammeID != value))
+				{
+					this._ProgrammeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Programme", DbType="NVarChar(75) NOT NULL", CanBeNull=false)]
+		public string Programme
+		{
+			get
+			{
+				return this._Programme;
+			}
+			set
+			{
+				if ((this._Programme != value))
+				{
+					this._Programme = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_YearPosition", DbType="Int NOT NULL")]
+		public int YearPosition
+		{
+			get
+			{
+				return this._YearPosition;
+			}
+			set
+			{
+				if ((this._YearPosition != value))
+				{
+					this._YearPosition = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Section", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Section
+		{
+			get
+			{
+				return this._Section;
+			}
+			set
+			{
+				if ((this._Section != value))
+				{
+					this._Section = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddDate", DbType="DateTime NOT NULL")]
+		public System.DateTime AddDate
+		{
+			get
+			{
+				return this._AddDate;
+			}
+			set
+			{
+				if ((this._AddDate != value))
+				{
+					this._AddDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string AddUser
+		{
+			get
+			{
+				return this._AddUser;
+			}
+			set
+			{
+				if ((this._AddUser != value))
+				{
+					this._AddUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
 				}
 			}
 		}

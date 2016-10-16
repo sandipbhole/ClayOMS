@@ -17,11 +17,11 @@ using COM = Clay.OMS.Message;
 
 namespace Clay.OMS.Data
 {
-    public class ProgrammeTypeTypeDAL
+    public class ProgrammeTypeDAL
     {
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ProgrammeTypeTypeDAL));
+        private static readonly ILog logger = LogManager.GetLogger(typeof(ProgrammeTypeDAL));
 
-        public ProgrammeTypeTypeDAL()
+        public ProgrammeTypeDAL()
         {
             InitializeLog4Net();
         }

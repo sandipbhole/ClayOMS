@@ -594,4 +594,65 @@
       <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.InsertClass" Method="InsertClass">
+    <Parameter Name="classCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Class" Parameter="class" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="programmeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="yearPosition" Type="System.Int32" DbType="Int" />
+    <Parameter Name="section" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertClassResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateClass" Method="UpdateClass">
+    <Parameter Name="classID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="classCode" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Class" Parameter="class" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="programmeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="yearPosition" Type="System.Int32" DbType="Int" />
+    <Parameter Name="section" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateClassResult">
+      <Column Name="Result" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FetchClass" Method="FetchClass">
+    <Parameter Name="classID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="FetchClassResult">
+      <Column Name="ClassID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClassCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Class" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Programme" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="YearPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Section" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetClass" Method="GetClass">
+    <Parameter Name="class" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="GetClassResult">
+      <Column Name="ClassID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClassCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Class" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ProgrammeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Programme" Type="System.String" DbType="NVarChar(75) NOT NULL" CanBeNull="false" />
+      <Column Name="YearPosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Section" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AddDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AddUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
