@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="ClayOMS" Class="ClayOMSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=ARCHIT\SQLSERVER2014;Initial Catalog=ClayOMS;Persist Security Info=True;User ID=sa" SettingsObjectName="Clay.OMS.Data.Properties.Settings" SettingsPropertyName="ClayOMSConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=INPNQLT915168\SQLSERVER2014;Initial Catalog=ClayOMS;Persist Security Info=True;User ID=sa" SettingsObjectName="Clay.OMS.Data.Properties.Settings" SettingsPropertyName="ClayOMSConnectionString1" Provider="System.Data.SqlClient" />
   <Function Name="dbo.DeleteDegree" Method="DeleteDegree">
     <Parameter Name="degreeID" Type="System.Int32" DbType="Int" />
     <Parameter Name="degree" Type="System.String" DbType="NVarChar(50)" />
@@ -622,6 +622,98 @@
       <Column Name="AddUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FetchStaffType" Method="FetchStaffType">
+    <Parameter Name="staffTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="FetchStaffTypeResult">
+      <Column Name="StaffTypeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="StaffType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetStaffType" Method="GetStaffType">
+    <Parameter Name="staffType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="GetStaffTypeResult">
+      <Column Name="StaffTypeID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="StaffType" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.InsertStaffType" Method="InsertStaffType">
+    <Parameter Name="staffType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="InsertStaffTypeResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.UpdateStaffType" Method="UpdateStaffType">
+    <Parameter Name="staffTypeID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="staffType" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="addUser" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="UpdateStaffTypeResult">
+      <Column Name="ErrorNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ErrorMessage" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FecthAddressType" Method="FecthAddressType">
+    <Parameter Name="addressTypeID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="FecthAddressTypeResult">
+      <Column Name="AddressTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AddressType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetAddressType" Method="GetAddressType">
+    <Parameter Name="addressType" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetAddressTypeResult">
+      <Column Name="AddressTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AddressType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FecthConcessionType" Method="FecthConcessionType">
+    <Parameter Name="concessionTypeID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="FecthConcessionTypeResult">
+      <Column Name="ConcessionTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConcessionType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetConcessionType" Method="GetConcessionType">
+    <Parameter Name="concessionType" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="GetConcessionTypeResult">
+      <Column Name="ConcessionTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ConcessionType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.FetchCongregation" Method="FetchCongregation">
+    <Parameter Name="congregationID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="FetchCongregationResult">
+      <Column Name="CongregationCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CongregationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Congregation" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GetCongregation" Method="GetCongregation">
+    <Parameter Name="congregation" Type="System.String" DbType="NVarChar(75)" />
+    <Parameter Name="activated" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="GetCongregationResult">
+      <Column Name="CongregationID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CongregationCode" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Congregation" Type="System.String" DbType="VarChar(75)" CanBeNull="true" />
+      <Column Name="Activated" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateUser" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UpdateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
 </Database>

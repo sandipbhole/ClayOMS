@@ -33,7 +33,7 @@ namespace Clay.OMS.Data
     #endregion
 		
 		public ClayOMSDataContext() : 
-				base(global::Clay.OMS.Data.Properties.Settings.Default.ClayOMSConnectionString, mappingSource)
+				base(global::Clay.OMS.Data.Properties.Settings.Default.ClayOMSConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -368,6 +368,76 @@ namespace Clay.OMS.Data
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), subject, department, programmeType, subjectType, activated);
 			return ((ISingleResult<GetSubjectResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FetchStaffType")]
+		public ISingleResult<FetchStaffTypeResult> FetchStaffType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> staffTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), staffTypeID, activated);
+			return ((ISingleResult<FetchStaffTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetStaffType")]
+		public ISingleResult<GetStaffTypeResult> GetStaffType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string staffType, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), staffType, activated);
+			return ((ISingleResult<GetStaffTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.InsertStaffType")]
+		public ISingleResult<InsertStaffTypeResult> InsertStaffType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string staffType, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), staffType, activated, addUser);
+			return ((ISingleResult<InsertStaffTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.UpdateStaffType")]
+		public ISingleResult<UpdateStaffTypeResult> UpdateStaffType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> staffTypeID, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string staffType, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addUser)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), staffTypeID, staffType, activated, addUser);
+			return ((ISingleResult<UpdateStaffTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FecthAddressType")]
+		public ISingleResult<FecthAddressTypeResult> FecthAddressType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> addressTypeID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), addressTypeID);
+			return ((ISingleResult<FecthAddressTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetAddressType")]
+		public ISingleResult<GetAddressTypeResult> GetAddressType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string addressType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), addressType);
+			return ((ISingleResult<GetAddressTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FecthConcessionType")]
+		public ISingleResult<FecthConcessionTypeResult> FecthConcessionType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> concessionTypeID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), concessionTypeID);
+			return ((ISingleResult<FecthConcessionTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetConcessionType")]
+		public ISingleResult<GetConcessionTypeResult> GetConcessionType([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(50)")] string concessionType)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), concessionType);
+			return ((ISingleResult<GetConcessionTypeResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.FetchCongregation")]
+		public ISingleResult<FetchCongregationResult> FetchCongregation([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="BigInt")] System.Nullable<long> congregationID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), congregationID);
+			return ((ISingleResult<FetchCongregationResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GetCongregation")]
+		public ISingleResult<GetCongregationResult> GetCongregation([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="NVarChar(75)")] string congregation, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> activated)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), congregation, activated);
+			return ((ISingleResult<GetCongregationResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -5552,6 +5622,698 @@ namespace Clay.OMS.Data
 				if ((this._UpdateUser != value))
 				{
 					this._UpdateUser = value;
+				}
+			}
+		}
+	}
+	
+	public partial class FetchStaffTypeResult
+	{
+		
+		private long _StaffTypeID;
+		
+		private string _StaffType;
+		
+		private bool _Activated;
+		
+		private string _UpdateUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		public FetchStaffTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffTypeID", DbType="BigInt NOT NULL")]
+		public long StaffTypeID
+		{
+			get
+			{
+				return this._StaffTypeID;
+			}
+			set
+			{
+				if ((this._StaffTypeID != value))
+				{
+					this._StaffTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffType", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StaffType
+		{
+			get
+			{
+				return this._StaffType;
+			}
+			set
+			{
+				if ((this._StaffType != value))
+				{
+					this._StaffType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetStaffTypeResult
+	{
+		
+		private long _StaffTypeID;
+		
+		private string _StaffType;
+		
+		private bool _Activated;
+		
+		private string _UpdateUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		public GetStaffTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffTypeID", DbType="BigInt NOT NULL")]
+		public long StaffTypeID
+		{
+			get
+			{
+				return this._StaffTypeID;
+			}
+			set
+			{
+				if ((this._StaffTypeID != value))
+				{
+					this._StaffTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StaffType", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string StaffType
+		{
+			get
+			{
+				return this._StaffType;
+			}
+			set
+			{
+				if ((this._StaffType != value))
+				{
+					this._StaffType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+	}
+	
+	public partial class InsertStaffTypeResult
+	{
+		
+		private System.Nullable<int> _ErrorNumber;
+		
+		private string _ErrorMessage;
+		
+		public InsertStaffTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
+		public System.Nullable<int> ErrorNumber
+		{
+			get
+			{
+				return this._ErrorNumber;
+			}
+			set
+			{
+				if ((this._ErrorNumber != value))
+				{
+					this._ErrorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
+		public string ErrorMessage
+		{
+			get
+			{
+				return this._ErrorMessage;
+			}
+			set
+			{
+				if ((this._ErrorMessage != value))
+				{
+					this._ErrorMessage = value;
+				}
+			}
+		}
+	}
+	
+	public partial class UpdateStaffTypeResult
+	{
+		
+		private System.Nullable<int> _ErrorNumber;
+		
+		private string _ErrorMessage;
+		
+		public UpdateStaffTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorNumber", DbType="Int")]
+		public System.Nullable<int> ErrorNumber
+		{
+			get
+			{
+				return this._ErrorNumber;
+			}
+			set
+			{
+				if ((this._ErrorNumber != value))
+				{
+					this._ErrorNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ErrorMessage", DbType="NVarChar(4000)")]
+		public string ErrorMessage
+		{
+			get
+			{
+				return this._ErrorMessage;
+			}
+			set
+			{
+				if ((this._ErrorMessage != value))
+				{
+					this._ErrorMessage = value;
+				}
+			}
+		}
+	}
+	
+	public partial class FecthAddressTypeResult
+	{
+		
+		private int _AddressTypeID;
+		
+		private string _AddressType;
+		
+		public FecthAddressTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressTypeID", DbType="Int NOT NULL")]
+		public int AddressTypeID
+		{
+			get
+			{
+				return this._AddressTypeID;
+			}
+			set
+			{
+				if ((this._AddressTypeID != value))
+				{
+					this._AddressTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressType", DbType="VarChar(50)")]
+		public string AddressType
+		{
+			get
+			{
+				return this._AddressType;
+			}
+			set
+			{
+				if ((this._AddressType != value))
+				{
+					this._AddressType = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetAddressTypeResult
+	{
+		
+		private int _AddressTypeID;
+		
+		private string _AddressType;
+		
+		public GetAddressTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressTypeID", DbType="Int NOT NULL")]
+		public int AddressTypeID
+		{
+			get
+			{
+				return this._AddressTypeID;
+			}
+			set
+			{
+				if ((this._AddressTypeID != value))
+				{
+					this._AddressTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressType", DbType="VarChar(50)")]
+		public string AddressType
+		{
+			get
+			{
+				return this._AddressType;
+			}
+			set
+			{
+				if ((this._AddressType != value))
+				{
+					this._AddressType = value;
+				}
+			}
+		}
+	}
+	
+	public partial class FecthConcessionTypeResult
+	{
+		
+		private int _ConcessionTypeID;
+		
+		private string _ConcessionType;
+		
+		public FecthConcessionTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConcessionTypeID", DbType="Int NOT NULL")]
+		public int ConcessionTypeID
+		{
+			get
+			{
+				return this._ConcessionTypeID;
+			}
+			set
+			{
+				if ((this._ConcessionTypeID != value))
+				{
+					this._ConcessionTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConcessionType", DbType="VarChar(50)")]
+		public string ConcessionType
+		{
+			get
+			{
+				return this._ConcessionType;
+			}
+			set
+			{
+				if ((this._ConcessionType != value))
+				{
+					this._ConcessionType = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetConcessionTypeResult
+	{
+		
+		private int _ConcessionTypeID;
+		
+		private string _ConcessionType;
+		
+		public GetConcessionTypeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConcessionTypeID", DbType="Int NOT NULL")]
+		public int ConcessionTypeID
+		{
+			get
+			{
+				return this._ConcessionTypeID;
+			}
+			set
+			{
+				if ((this._ConcessionTypeID != value))
+				{
+					this._ConcessionTypeID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConcessionType", DbType="VarChar(50)")]
+		public string ConcessionType
+		{
+			get
+			{
+				return this._ConcessionType;
+			}
+			set
+			{
+				if ((this._ConcessionType != value))
+				{
+					this._ConcessionType = value;
+				}
+			}
+		}
+	}
+	
+	public partial class FetchCongregationResult
+	{
+		
+		private string _CongregationCode;
+		
+		private int _CongregationID;
+		
+		private string _Congregation;
+		
+		private bool _Activated;
+		
+		private string _UpdateUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		public FetchCongregationResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CongregationCode", DbType="VarChar(20)")]
+		public string CongregationCode
+		{
+			get
+			{
+				return this._CongregationCode;
+			}
+			set
+			{
+				if ((this._CongregationCode != value))
+				{
+					this._CongregationCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CongregationID", DbType="Int NOT NULL")]
+		public int CongregationID
+		{
+			get
+			{
+				return this._CongregationID;
+			}
+			set
+			{
+				if ((this._CongregationID != value))
+				{
+					this._CongregationID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Congregation", DbType="VarChar(75)")]
+		public string Congregation
+		{
+			get
+			{
+				return this._Congregation;
+			}
+			set
+			{
+				if ((this._Congregation != value))
+				{
+					this._Congregation = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GetCongregationResult
+	{
+		
+		private int _CongregationID;
+		
+		private string _CongregationCode;
+		
+		private string _Congregation;
+		
+		private bool _Activated;
+		
+		private string _UpdateUser;
+		
+		private System.DateTime _UpdateDate;
+		
+		public GetCongregationResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CongregationID", DbType="Int NOT NULL")]
+		public int CongregationID
+		{
+			get
+			{
+				return this._CongregationID;
+			}
+			set
+			{
+				if ((this._CongregationID != value))
+				{
+					this._CongregationID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CongregationCode", DbType="VarChar(20)")]
+		public string CongregationCode
+		{
+			get
+			{
+				return this._CongregationCode;
+			}
+			set
+			{
+				if ((this._CongregationCode != value))
+				{
+					this._CongregationCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Congregation", DbType="VarChar(75)")]
+		public string Congregation
+		{
+			get
+			{
+				return this._Congregation;
+			}
+			set
+			{
+				if ((this._Congregation != value))
+				{
+					this._Congregation = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Activated", DbType="Bit NOT NULL")]
+		public bool Activated
+		{
+			get
+			{
+				return this._Activated;
+			}
+			set
+			{
+				if ((this._Activated != value))
+				{
+					this._Activated = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUser", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UpdateUser
+		{
+			get
+			{
+				return this._UpdateUser;
+			}
+			set
+			{
+				if ((this._UpdateUser != value))
+				{
+					this._UpdateUser = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateDate", DbType="DateTime NOT NULL")]
+		public System.DateTime UpdateDate
+		{
+			get
+			{
+				return this._UpdateDate;
+			}
+			set
+			{
+				if ((this._UpdateDate != value))
+				{
+					this._UpdateDate = value;
 				}
 			}
 		}

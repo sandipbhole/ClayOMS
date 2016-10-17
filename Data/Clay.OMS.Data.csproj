@@ -11,6 +11,10 @@
     <AssemblyName>Clay.OMS.Data</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,11 +53,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcademicClassDAL.cs" />
+    <Compile Include="AddressTypeDAL.cs" />
     <Compile Include="ClayOMSData.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClayOMSData.dbml</DependentUpon>
     </Compile>
+    <Compile Include="ConcessionTypeDAL.cs" />
+    <Compile Include="CongregationDAL.cs" />
     <Compile Include="DegreeDAL.cs" />
     <Compile Include="DepartmentDAL.cs" />
     <Compile Include="DesignationDAL.cs" />
@@ -69,10 +76,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="StaffTypeDAL.cs" />
     <Compile Include="SubjectDAL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClayOMSData.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <SubType>Designer</SubType>

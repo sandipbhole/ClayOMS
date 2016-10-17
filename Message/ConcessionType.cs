@@ -7,16 +7,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Clay.OMS.Message
 {
-    public class ProgrammeType
+    public class ConcessionType
     {
-        public int programmeTypeID { get; set; }
+        public long concessionTypeID { get; set; }
 
-        [Display(Name = "Programme Type")]
+        [Display(Name = "Concession type")]
         [StringLength(50)]
-        [Required(ErrorMessage = "Please provide programme type.", AllowEmptyStrings = false)]
-        public string programmeType { get; set; }
-
-        public string seperator { get; set; }
+        [Required(ErrorMessage = "Please provide concession type.", AllowEmptyStrings = false)]
+        public string concessionType { get; set; }
 
         public System.Nullable<Boolean> activated { get; set; }
 
